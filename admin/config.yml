@@ -1,1 +1,18 @@
-https://polacyrodacy.netlify.app/admin/
+backend:
+  name: github
+  repo: polacyrodacy/polacyrodacy 
+  branch: main
+
+media_folder: "assets/images"  # folder do zdjęć
+public_folder: "/assets/images"
+
+collections:
+  - name: "posts"
+    label: "News"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Treść", name: "body", widget: "markdown" }
