@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Polacy Rodacy</title>
+  <link rel="icon" type="image/png" href="PR.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+  :root {
+    --bg: #f4f4f4;
+    --text: #1a1a1a;
+    --section-bg: #fff;
+    --accent: rgb(130, 0, 0);
+    --nav-bg: #1a1a1a;
+    --nav-link: #fff;
+    --footer-bg: #222;
+    --footer-text: #aaa;
+    --icon-color: #1a1a1a;
+    --link-color: #1a1a1a;
+    --link-hover: rgb(130, 0, 0);
+  }
+
+  [data-theme="dark"] {
+    --bg: #121212;
+    --text: #f4f4f4;
+    --section-bg: #1e1e1e;
+    --accent: rgb(255, 90, 90);
+    --nav-bg: #000;
+    --nav-link: #fff;
+    --footer-bg: #000;
+    --footer-text: #777;
+    --icon-color: #f4f4f4;
+    --link-color: #f4f4f4;
+    --link-hover: rgb(255, 90, 90);
+  }
+* {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+a, .nav-links a, .social-icons a {
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+section, header, nav, footer {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  header {
+    background-color: rgb(130, 0, 0);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  header p {
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  main {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  section {
+    margin-bottom: 2.5rem;
+    background: var(--section-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: var(--accent);
+  }
+
+  ul {
+    padding-left: 1.5rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    font-size: 0.9rem;
+  }
+
+  nav {
+    background-color: var(--nav-bg);
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .logo {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    color: var(--nav-link);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: var(--link-hover);
+  }
+
+  /* Mobile navbar */
+  @media (max-width: 600px) {
+    .nav-links {
+      flex-direction: column;
+      background-color: var(--nav-bg);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: none;
+    }
+
+    nav:hover .nav-links {
+      display: flex;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    main {
+      padding: 1rem;
+    }
+
+    section {
+      padding: 1rem;
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .social-icons a {
+    color: var(--icon-color);
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .social-icons a:hover {
+    color: var(--accent);
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--link-hover);
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <span class="logo">Polacy Rodacy</span>
+      <ul class="nav-links">
+        <li><a href="#team">Team</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <!--<li><a href="#next-tournament">Next</a></li>-->
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;" title="Toggle theme">
+  <i class="fas fa-moon"></i>
+</button>
+
+    </div>
+  </nav>
+  <header>
+    <h1>Polacy Rodacy</h1>
+    <p>Official Brawl Stars Esports Team</p>
+  </header>
+  <main>
+    <section id="team">
+      <h2>Current Team</h2>
+      <ul>
+        <li>🇵🇱 maly_misiek (Captain)</li>
+        <li>🇵🇱 Igmen</li>
+        <li>🇵🇱 Dizel</li>
+        <li>&#x1F1E8;&#x1F1FF; Doughnut man</li>
+      </ul>
+    </section>
+    <section id="tournaments">
+      <h2>Tournament History</h2>
+      <ul>
+        <li><strong>BPS Fast Tournaments EMEA #3</strong> — Jan 17, 2025,</li><a href="https://matcherino.com/t/bpsfasteu3/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>OWN Masters Valencia – Open Qualifier II</strong> — Mar 28, 2025,</li><a href="https://matcherino.com/t/own-qualifier-2/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://www.youtube.com/watch?v=YR_CgIzWfpc&si=vFrQmtxcZWfSk0J9" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>DPB Brawl Stars Tournament</strong> — Apr 26, 2025, <a href="https://challonge.com/pl/dpb_tournament/module" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://www.youtube.com/watch?v=IRnQKNEsru8&ab_channel=PolacyRodacy" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>CES Pre Summer Cup</strong> — May 17, 2025, <a href="https://youtu.be/AnaoLqheivQ?si=ibWGLg3DXJl1GpS8" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>June Brawlfest</strong> - June 22, 2025, <a href="https://matcherino.com/supercell/tournaments/151660/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>Test Tournament</strong> - July 11, 2025, <a href="https://matcherino.com/supercell/tournaments/155682/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://youtu.be/3k0G5k1SLwQ" target="_blank">PR Zero replay</a>, <a href="https://youtu.be/zH5V_UqlOPs" target="_blank">PR One replay</a></li>
+        <li><strong>LC | Happy Hour Series - July 27 (EMEA)</strong> - July 27, 2025, <a href="https://matcherino.com/t/lchhseries0725emea/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://www.youtube.com/watch?v=-6dGoarGtzo" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>LC | Happy Hour Series - August 8 (EMEA)</strong> - August 8, 2025, <a href="https://matcherino.com/t/lchhseries0825emea/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://youtu.be/sguRs2DAdyQ" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>Veracity - Summer Edition</strong> - August 16, 2025, <a href="https://matcherino.com/supercell/tournaments/161966/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://youtu.be/by11eXYSXt8" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>Misiek Cup - Qualifier 4</strong> - August 22, 2025, <a href="https://matcherino.com/supercell/tournaments/166188/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://youtu.be/XMWslNtMaG8" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>Arab Stars™ Road to glory 1</strong> - August 22, 2025, <a href="https://matcherino.com/t/arabstars1/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>, <a href="https://youtu.be/FShGMpBkZiI" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li><strong>Continental Cup 7 #EMEA</strong> - August 29, 2025, <a href="https://matcherino.com/t/continental-cup-7-emea/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>KNOXIDER TOURNAMENT #2 (For 3 BP+)</strong> - August 29, 2025, <a href="https://matcherino.com/supercell/tournaments/163043/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>Wildcard Weekend #3</strong> - Septembert 6, 2025, <a href="https://matcherino.com/t/ww3/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>SK Cup 2025 #4</strong> - Septembert 13, 2025, <a href="https://matcherino.com/t/sk-cup-4/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+        <li><strong>#NT TOURNEMANTS 4 3x SUPPORTER PIN</strong> - Septembert 13, 2025, <a href="https://matcherino.com/supercell/tournaments/169692/bracket/bracket" target="_blank" rel="noopener noreferrer">Bracket</a>.</li>
+      </ul>
+    </section>
+    <!--<section id="next-tournament">
+      <h2>Next Tournaments</h2>
+      <p><div id="następny turniej">
+        <h2 style="text-align:center;">⏳ The tournament starts in:</h2>
+      <div id="countdown" style="font-size: 2em; text-align: center; font-weight: bold;"></div>
+      <script>
+        function updateCountdown() {
+          const eventDate = new Date('2025-08-29T17:30:00+02:00'); // CET to UTC+2
+          const now = new Date();
+          const diff = eventDate - now;
+      
+          if (diff <= 0) {
+            document.getElementById('countdown').innerText = '✅ Tournament has started!';
+            return;
+          }
+      
+           const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+           const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+           const minutes = Math.floor((diff / 1000 / 60) % 60);
+          const seconds = Math.floor((diff / 1000) % 60);
+      
+          
+          document.getElementById('countdown').innerText =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+      
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      </script>
+        </div></p>
+      <p><a href="https://matcherino.com/t/continental-cup-7-emea/bracket/bracket" target="_blank" rel="noopener noreferrer">Continental Cup 7 #EMEA</a></p>
+      <p>Squad for tournament: maly_misiek, Igmen, Frat(from Fear YourSelf).</p>
+    </section>-->
+    <section id="timeline">
+      <h2>History</h2>
+      <ul>
+        <li>01.03.2024 - Forming a team with maly_misiek Iluzjon and Dizel</li>
+        <li>03.11.2024 - Dizel is fired and Lamoref joins</li>
+        <li>08.03.2025 - Iluzjon quit from Brawl Stars</li>
+        <li>28.03.2025 - Polacy Rodacy play "OWN Masters Valencia - Open Qualifier II" with doughnut man and they finished at 129th - 229th.</li>
+        <li>29.03.2025 - doughnut man join to Team</li>
+        <li>10.04.2025 - Partnership with CELEST</li>
+        <li>26.04.2025 - Polacy Rodacy play DPB Brawl Stars Tournament with Igmen from CELEST</li>
+        <li>16.05.2025 - Igmen joins to PR</li>
+        <li>16.05.2025 - Polacy Rodacy play scrim with ZeroFear Esports, <a href="https://www.youtube.com/watch?v=v6x6xSg6P6Y&ab_channel=PolacyRodacy" target="_blank" rel="noopener noreferrer">replay</a></li>
+        <li>17.05.2025 - Igmen play CES Pre Summer Cup Day 1 and he finish at 3th-4th place(in this tournament was 8 people), he play with broken arm. In CES pre summer qualifiers #2, Igmen finish at 2nd place he was still in CELEST then.</li>
+        <li>18.05.2025 - Polacy Rodacy Academy Roaster is here with maly_misiek, Kevin and Novak</li>
+        <li>24.05.2025 - Novak was fired</li>
+        <li>27.05.2025 - Lamoref is moved to coach position</li>
+        <li>28.05.2025 - Kevin's moved to the main lineup and the disintegration of the Academy </li>
+        <li>29.05.2025 - Botzoid is joins as a manager and Igmen lost Capitan rank</li>
+        <li>08.06.2025 - Lamoref has left from team</li>
+        <li>15.09.2025 - Doughnut is fired and Dizel is back</li>
+        <li>07.07.2025 - ShadowErik and Wookie joins to PR. Polacy Rodacy One was open with Kevin, ShadowErik and Wookie.</li>
+        <li>10.07.2025 - nyamura joins to PR One.</li>
+        <li>11.07.2025 - PR nyamura and One play Test tournament</li>
+        <li>16.07.2025 - Doughnut back to PR nyamura and ShadowErik, nyamura and Doughnut play scrim with nyamuraFear, <a href="https://www.youtube.com/watch?v=I5wdYA8ev7A" target="_blank" rel="noopener noreferrer">Replay</a>.</li>
+        <li>18.07.2025 - Scrim PR nyamura vs PR One, <a href="https://www.youtube.com/watch?v=TyRJkEZSvqM" target="_blank">Replay</a></li>
+        <li>21.07.2025 - Wookie quit.</li>
+        <li>22.07.2025 - fafik joins to PR One</li>
+        <li>24.07.2025 - ShadowErik go to PR Zero and doughnut to PR One</li>
+        <li>05.08.2025 - Kevin, nyamura, ShadowErik and fafik gone to CELEST and now is only one roaster.</li>
+        <li>06.08.2025 - ShadowErik back to PR.</li>
+        <li>14.09.2025 - I see joins as coach</li>
+        <li>21.09.2025 - I see quit</li>
+        <li>30.09.2025 - ShadowErik quit from PR</li>
+      </ul>
+  </section>
+  <section id="contact">
+  <h2>Contact</h2>
+  <p>Follow us on:</p>
+  <div class="social-icons">
+    <a href="https://discord.gg/xByF5P76W6" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+    <a href="https://x.com/Polacy_Rodacy" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.youtube.com/@Polacy_Rodacy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+</section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
+  </footer>
+  <script>
+  const toggle = document.getElementById('theme-toggle');
+  const icon = toggle.querySelector('i');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  if (currentTheme === 'dark') icon.classList.replace('fa-moon', 'fa-sun');
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    icon.classList.toggle('fa-moon');
+    icon.classList.toggle('fa-sun');
+  });
+  </script>
+</body>
+</html>
