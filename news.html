@@ -1,144 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News | Polacy Rodacy</title>
-  <link rel="icon" type="image/png" href="assets/images/PR.png">
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="icon" href="assets/images/PR.png" />
+  <link rel="stylesheet" href="style/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    body {
-      background: #111;
-      color: #eee;
-      font-family: 'Segoe UI', sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    body.light {
-      background: #fff;
-      color: #111;
-    }
-
-    nav {
-      background: #222;
-      padding: 10px 20px;
-    }
-
-    nav.light {
-      background: #ddd;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-
-    #news-list {
+    #news-list, #news-content {
       max-width: 800px;
-      margin: 30px auto;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-
-    #news-list img {
-      max-width: 100%;
+    #news-list article {
+      background: #1a1a1a;
       border-radius: 10px;
-    }
-
-    .news-item {
-      background: #222;
-      padding: 20px;
+      padding: 15px;
       margin-bottom: 20px;
-      border-radius: 10px;
-      transition: background 0.3s;
+      transition: 0.2s;
     }
-
-    body.light .news-item {
-      background: #eee;
+    #news-list article:hover {
+      background: #252525;
+      transform: scale(1.01);
     }
-
-    .news-item h2 {
-      margin-bottom: 5px;
+    a.news-link {
+      color: #ff4747;
+      text-decoration: none;
+      font-weight: bold;
     }
-
-    .news-item small {
-      color: #aaa;
-    }
-
-    body.light .news-item small {
-      color: #555;
-    }
-
-    button#theme-toggle {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-
-    body.light button#theme-toggle {
-      color: black;
-    }
-
-    .news-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 10px rgba(0,0,0,0.4);
-}
-
   </style>
 </head>
 <body>
-  <nav id="navbar">
+  <nav>
     <div class="nav-container">
       <span class="logo">Polacy Rodacy</span>
       <ul class="nav-links">
-        <!-- Tutaj możesz dodać linki -->
+        <li><a href="/">Home</a></li>
+        <li><a href="/news">News</a></li>
       </ul>
-      <button id="theme-toggle" title="Toggle theme">🌙</button>
     </div>
   </nav>
 
-  <header>
-    <h1>📰 Polacy Rodacy News</h1>
-  </header>
-
   <main id="news-list">
+    <h1>📰 Polacy Rodacy News</h1>
     <p>Loading latest updates...</p>
   </main>
 
-  <script> // Load news dynamically from GitHub
-    fetch('https://raw.githubusercontent.com/polacyrodacy/Main/main/_posts/index.json')
-      .then(res => res.json())
-      .then(posts => {
-        const container = document.getElementById('news-list');
-        container.innerHTML = '';
-        posts.forEach(post => {
-          fetch(`https://raw.githubusercontent.com/polacyrodacy/Main/main/_posts/${post.file}`)
-            .then(res => res.text())
-            .then(md => {
-              const html = marked(md);
-              const div = document.createElement('div');
-              div.className = 'news-item';
-              div.innerHTML = `<h2>${post.title}</h2><small>${post.date}</small>${html}`;
-              container.appendChild(div);
-            })
-            .catch(() => {
-              const div = document.createElement('div');
-              div.className = 'news-item';
-              div.innerHTML = `<h2>${post.title}</h2><small>${post.date}</small><p>Failed to load this news.</p>`;
-              container.appendChild(div);
-            });
+  <div id="news-content" style="display:none;"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const post = params.get("post");
+
+    if (post) {
+      // Wyświetl konkretny news
+      document.getElementById("news-list").style.display = "none";
+      document.getElementById("news-content").style.display = "block";
+
+      fetch(`/news-md/${post}.md`)
+        .then(res => {
+          if (!res.ok) throw new Error("404");
+          return res.text();
+        })
+        .then(md => {
+          const html = marked(md);
+          document.getElementById("news-content").innerHTML = html;
+        })
+        .catch(() => {
+          document.getElementById("news-content").innerHTML = "<p>❌ News not found.</p>";
         });
-      })
-      .catch(() => {
-        document.getElementById('news-list').innerHTML = "<p>No news 😔</p>";
-      });
+
+    } else {
+      // Lista newsów
+      fetch("/news-md/index.json")
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("news-list");
+          container.innerHTML = "<h1>📰 Polacy Rodacy News</h1>";
+          data.forEach(item => {
+            const article = document.createElement("article");
+            article.innerHTML = `<a class="news-link" href="/news?post=${item.file.replace('.md','')}">${item.title}</a><p>${item.date}</p>`;
+            container.appendChild(article);
+          });
+        })
+        .catch(() => {
+          document.getElementById("news-list").innerHTML = "<p>No news 😔</p>";
+        });
+    }
   </script>
 </body>
 </html>
