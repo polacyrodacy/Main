@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | Polacy Rodacy</title>
+  <link rel="stylesheet" href="css/news.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📰 Polacy Rodacy News</h1>
+  </header>
+
+  <main id="news-list">
+    <p>Loading latest updates...</p>
+  </main>
+
+  <script>
+    // przykładowy wpis (potem można dodać dynamiczne)
+    fetch('https://raw.githubusercontent.com/polacyrodacy/Main/main/_posts/2025-10-07-pierwsza-aktualnosc.md')
+      .then(res => res.text())
+      .then(md => {
+        const html = marked(md);
+        document.getElementById('news-list').innerHTML = html;
+      })
+      .catch(() => {
+        document.getElementById('news-list').innerHTML = "<p>No news 😔</p>";
+      });
+  </script>
+</body>
+</html>
