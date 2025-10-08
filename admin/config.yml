@@ -1,17 +1,19 @@
 backend:
   name: github
-  repo: polacyrodacy/polacyrodacy 
+  repo: polacyrodacy/polacyrodacy
   branch: main
 
 media_folder: "assets/images"  # folder do zdjęć
 public_folder: "/assets/images"
 
 collections:
-  - name: "posts"
-    label: "News"
-    folder: "_posts"
-    create: true
+  - name: "news"               # nazwa kolekcji
+    label: "News"              # jak będzie się wyświetlać w panelu CMS
+    folder: "news"             # folder z artykułami
+    create: true               # pozwól tworzyć nowe pliki
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    output: true               # generuj jako HTML
+    permalink: /news/:slug/    # adres URL każdego wpisu
     fields:
       - { label: "Tytuł", name: "title", widget: "string" }
       - { label: "Data", name: "date", widget: "datetime" }
