@@ -97,42 +97,37 @@
       <button id="theme-toggle" title="Toggle theme">🌙</button>
     </div>
   </nav>
-
-  <header>
-    <h1>📰 Polacy Rodacy News</h1>
+<header>
+    <h1>#BRAWL STARS NEWS</h1>
   </header>
 
   <main id="news-list">
-    <p>Loading latest updates...</p>
+    <p>Loading...</p>
   </main>
 
   <script>
- // Load news dynamically from GitHub
     fetch('https://raw.githubusercontent.com/polacyrodacy/Main/main/_posts/index.json')
       .then(res => res.json())
       .then(posts => {
         const container = document.getElementById('news-list');
         container.innerHTML = '';
         posts.forEach(post => {
-          fetch(`https://raw.githubusercontent.com/polacyrodacy/Main/main/_posts/${post.file}`)
-            .then(res => res.text())
-            .then(md => {
-              const html = marked(md);
-              const div = document.createElement('div');
-              div.className = 'news-item';
-              div.innerHTML = `<h2>${post.title}</h2><small>${post.date}</small>${html}`;
-              container.appendChild(div);
-            })
-            .catch(() => {
-              const div = document.createElement('div');
-              div.className = 'news-item';
-              div.innerHTML = `<h2>${post.title}</h2><small>${post.date}</small><p>Failed to load this news.</p>`;
-              container.appendChild(div);
-            });
+          const div = document.createElement('div');
+          div.className = 'news-card';
+          div.innerHTML = `
+            <a href="post.html?file=${post.file}">
+              <img src="${post.image}" alt="${post.title}">
+              <div class="news-info">
+                <h2>${post.title}</h2>
+                <small>${post.date}</small>
+              </div>
+            </a>
+          `;
+          container.appendChild(div);
         });
       })
       .catch(() => {
-        document.getElementById('news-list').innerHTML = "<p>No news 😔</p>";
+        document.getElementById('news-list').innerHTML = "<p>No news found 😔</p>";
       });
   </script>
   <script src="scripts/day-night.js"></script>
