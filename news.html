@@ -7,65 +7,43 @@
   <link rel="icon" type="image/png" href="assets/images/PR.png">
   <link rel="stylesheet" href="style/style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <style>
-    #news-list {
-      max-width: 800px;
-      margin: 30px auto;
-    }
-
-    #news-list img {
-      max-width: 100%;
-      border-radius: 10px;
-    }
-
-    .news-item {
-      background: #222;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
-
-    body.light .news-item {
-      background: #eee;
-    }
-
-    .news-item h2 {
-      margin-bottom: 5px;
-    }
-
-    .news-item small {
-      color: #aaa;
-    }
-
-    body.light .news-item small {
-      color: #555;
-    }
-  </style>
 </head>
+
 <body>
+  <!-- 🔝 Nawigacja -->
   <nav>
     <div class="nav-container">
       <span class="logo">Polacy Rodacy</span>
       <ul class="nav-links">
-        <li><a href="/Main/index.html">Home</a></li>
-        <li><a href="/Main/news.html">News</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
       </ul>
       <button id="theme-toggle" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;" title="Toggle theme">
-  <i class="fas fa-moon"></i>
+        <i class="fas fa-moon"></i>
       </button>
     </div>
   </nav>
-<header>
+
+  <!-- 📰 Nagłówek -->
+  <header>
     <h1>#BRAWL STARS NEWS</h1>
   </header>
 
-  <main id="news-list">
-    <p>Loading...</p>
+  <!-- 📜 Sekcja z newsami -->
+  <main>
+    <div class="news-grid" id="news-list">
+      <p>Loading...</p>
+    </div>
   </main>
 
+  <!-- ⚡ Footer -->
+  <footer>
+    <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
+  </footer>
+
+  <!-- 🔧 Skrypt ładujący newsy -->
   <script>
-    fetch('https://raw.githubusercontent.com/polacyrodacy/Main/news/index.json')
+    fetch('https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/index.json')
       .then(res => res.json())
       .then(posts => {
         const container = document.getElementById('news-list');
@@ -76,8 +54,8 @@
           div.innerHTML = `
             <a href="post.html?file=${post.file}">
               <img src="${post.image}" alt="${post.title}">
-              <div class="news-info">
-                <h2>${post.title}</h2>
+              <div class="news-card-content">
+                <h3>${post.title}</h3>
                 <small>${post.date}</small>
               </div>
             </a>
@@ -89,9 +67,11 @@
         document.getElementById('news-list').innerHTML = "<p>No news found 😔</p>";
       });
   </script>
-    <footer>
-    <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
-  </footer>
-  <script src="/scripts/day-night.js"></script>
+
+  <!-- 🌙 Skrypt motywu (jeden, bez duplikatów) -->
+  <script src="scripts/day-night.js"></script>
+
+  <!-- 📦 Ikony Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
