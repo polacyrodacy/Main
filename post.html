@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News | Polacy Rodacy</title>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="news.html">← Back to News</a>
+  </nav>
+
+  <main>
+    <div id="post-container">Loading post...</div>
+  </main>
+
+  <script>
+  const repoURL = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
+  const params = new URLSearchParams(window.location.search);
+  const date = params.get('date');
+
+  async function loadPost() {
+    try {
+      const indexRes = await fetch(repoURL + "index.json");
+      const posts = await indexRes.json();
+      const post = posts.find(p => p.date === date);
+
+      if (!post) {
+        document.getElementById("post-container").innerHTML = "<p>Post not found 😢</p>";
+        return;
+      }
+
+      const mdRes = await fetch(repoURL + post.file);
+      const mdText = await mdRes.text();
+      const html = marked.parse(mdText);
+
+      document.getElementById("post-container").innerHTML = `
+        <article class="news-article">
+          <h1>${post.title}</h1>
+          <small>${post.date}</small>
+          <div class="news-body">${html}</div>
+        </article>
+      `;
+    } catch (err) {
+      document.getElementById("post-container").innerHTML = "<p>Failed to load post ⚠️</p>";
+      console.error(err);
+    }
+  }
+
+  loadPost();
+  </script>
+</body>
+</html>

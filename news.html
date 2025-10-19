@@ -36,7 +36,7 @@
     <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
   </footer>
 
-  <script>
+<script>
 const repoURL = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
 
 fetch(repoURL + "index.json")
@@ -46,37 +46,24 @@ fetch(repoURL + "index.json")
     container.innerHTML = '';
 
     for (const post of posts) {
-      try {
-        // Pobierz markdown
-        const mdResponse = await fetch(repoURL + post.file);
-        const mdText = await mdResponse.text();
-
-        // Zamień markdown na HTML
-        const htmlContent = marked.parse(mdText);
-
-        // Utwórz element dla posta
-        const div = document.createElement('div');
-        div.className = 'news-card';
-        div.innerHTML = `
-          <div class="news-card-content">
-            <h3>${post.title}</h3>
-            <small>${post.date}</small>
-            <div class="news-body">${htmlContent}</div>
-          </div>
-        `;
-        container.appendChild(div);
-      } catch (err) {
-        console.error("Błąd ładowania posta:", post.file, err);
-      }
+      const div = document.createElement('div');
+      div.className = 'news-card';
+      div.innerHTML = `
+        <div class="news-card-content">
+          <h3><a href="post.html?date=${post.date}">${post.title}</a></h3>
+          <small>${post.date}</small>
+        </div>
+      `;
+      container.appendChild(div);
     }
 
-    if (posts.length === 0) container.innerHTML = "<p>No news found 😔</p>";
+    if (posts.length === 0)
+      container.innerHTML = "<p>No news found 😔</p>";
   })
   .catch(() => {
     document.getElementById('news-list').innerHTML = "<p>Failed to load news 😢</p>";
   });
 </script>
-
 
   <script src="scripts/day-night.js"></script>
 </body>
