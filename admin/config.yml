@@ -1,20 +1,18 @@
 backend:
   name: github
-  repo: polacyrodacy/polacyrodacy
+  repo: polacyrodacy/polacyrodacy  # Twój prawdziwy repozytorium
   branch: main
 
-media_folder: "assets/images"  # folder do zdjęć
-public_folder: "/assets/images"
+media_folder: "assets/images"  # gdzie trafiają obrazki (lokalnie)
+public_folder: "/assets/images"  # jak będą widoczne na stronie
 
 collections:
-  - name: "news"               # nazwa kolekcji
-    label: "News"              # jak będzie się wyświetlać w panelu CMS
-    folder: "news"             # folder z artykułami
-    create: true               # pozwól tworzyć nowe pliki
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    output: true               # generuj jako HTML
-    permalink: /news/:slug/    # adres URL każdego wpisu
+  - name: "news"
+    label: "News"
+    folder: "news"  # tu masz już pliki .md
+    create: true
+    slug: "{{slug}}"
     fields:
       - { label: "Tytuł", name: "title", widget: "string" }
-      - { label: "Data", name: "date", widget: "datetime" }
-      - { label: "Treść", name: "body", widget: "markdown" }
+      - { label: "Data publikacji", name: "date", widget: "datetime" }
+      - { label: "Treść", name: "body", widget: "markdown" }  # WYSIWYG edytor
