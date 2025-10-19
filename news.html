@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News | Polacy Rodacy</title>
   <link rel="icon" type="image/png" href="assets/images/PR.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style/style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
-  <!-- 🔝 Nawigacja -->
   <nav>
     <div class="nav-container">
       <span class="logo">Polacy Rodacy</span>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
+        <li><a href="/Main/index.html">Home</a></li>
+        <li><a href="/Main/news.html">News</a></li>
       </ul>
       <button id="theme-toggle" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;" title="Toggle theme">
         <i class="fas fa-moon"></i>
@@ -24,24 +24,18 @@
     </div>
   </nav>
 
-  <!-- 📰 Nagłówek -->
   <header>
     <h1>#BRAWL STARS NEWS</h1>
   </header>
 
-  <!-- 📜 Sekcja z newsami -->
-  <main>
-    <div class="news-grid" id="news-list">
-      <p>Loading...</p>
-    </div>
+  <main id="news-list">
+    <p>Loading...</p>
   </main>
 
-  <!-- ⚡ Footer -->
   <footer>
     <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
   </footer>
 
-  <!-- 🔧 Skrypt ładujący newsy -->
   <script>
     fetch('https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/index.json')
       .then(res => res.json())
@@ -68,10 +62,6 @@
       });
   </script>
 
-  <!-- 🌙 Skrypt motywu (jeden, bez duplikatów) -->
   <script src="scripts/day-night.js"></script>
-
-  <!-- 📦 Ikony Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
