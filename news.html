@@ -37,30 +37,32 @@
   </footer>
 
   <script>
-    fetch('https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/index.json')
-      .then(res => res.json())
-      .then(posts => {
-        const container = document.getElementById('news-list');
-        container.innerHTML = '';
-        posts.forEach(post => {
-          const div = document.createElement('div');
-          div.className = 'news-card';
-          div.innerHTML = `
-            <a href="post.html?file=${post.file}">
-              <img src="${post.image}" alt="${post.title}">
-              <div class="news-card-content">
-                <h3>${post.title}</h3>
-                <small>${post.date}</small>
-              </div>
-            </a>
-          `;
-          container.appendChild(div);
-        });
-      })
-      .catch(() => {
-        document.getElementById('news-list').innerHTML = "<p>No news found 😔</p>";
-      });
-  </script>
+fetch('https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/index.json')
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById('news-list');
+    container.innerHTML = '';
+
+    posts.forEach((post, i) => {
+      const div = document.createElement('div');
+      div.className = 'news-card';
+      div.style.animationDelay = `${i * 0.15}s`; // ⏱️ każde opóźnione o 150ms
+      div.innerHTML = `
+        <a href="post.html?file=${post.file}">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="news-card-content">
+            <h3>${post.title}</h3>
+            <small>${post.date}</small>
+          </div>
+        </a>
+      `;
+      container.appendChild(div);
+    });
+  })
+  .catch(() => {
+    document.getElementById('news-list').innerHTML = "<p>No news found 😔</p>";
+  });
+</script>
 
   <script src="scripts/day-night.js"></script>
 </body>
