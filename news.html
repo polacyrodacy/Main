@@ -37,32 +37,46 @@
   </footer>
 
   <script>
-fetch('https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/index.json')
+const repoURL = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
+
+fetch(repoURL + "index.json")
   .then(res => res.json())
-  .then(posts => {
+  .then(async posts => {
     const container = document.getElementById('news-list');
     container.innerHTML = '';
 
-    posts.forEach((post, i) => {
-      const div = document.createElement('div');
-      div.className = 'news-card';
-      div.style.animationDelay = `${i * 0.15}s`; // ⏱️ każde opóźnione o 150ms
-      div.innerHTML = `
-        <a href="post.html?file=${post.file}">
-          <img src="${post.image}" alt="${post.title}">
+    for (const post of posts) {
+      try {
+        // Pobierz markdown
+        const mdResponse = await fetch(repoURL + post.file);
+        const mdText = await mdResponse.text();
+
+        // Zamień markdown na HTML
+        const htmlContent = marked.parse(mdText);
+
+        // Utwórz element dla posta
+        const div = document.createElement('div');
+        div.className = 'news-card';
+        div.innerHTML = `
           <div class="news-card-content">
             <h3>${post.title}</h3>
             <small>${post.date}</small>
+            <div class="news-body">${htmlContent}</div>
           </div>
-        </a>
-      `;
-      container.appendChild(div);
-    });
+        `;
+        container.appendChild(div);
+      } catch (err) {
+        console.error("Błąd ładowania posta:", post.file, err);
+      }
+    }
+
+    if (posts.length === 0) container.innerHTML = "<p>No news found 😔</p>";
   })
   .catch(() => {
-    document.getElementById('news-list').innerHTML = "<p>No news found 😔</p>";
+    document.getElementById('news-list').innerHTML = "<p>Failed to load news 😢</p>";
   });
 </script>
+
 
   <script src="scripts/day-night.js"></script>
 </body>
