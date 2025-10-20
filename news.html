@@ -26,52 +26,35 @@
     <h1>#BRAWL STARS NEWS</h1>
   </header>
 
-  <main id="news-list">
-    <p>Loading...</p>
-  </main>
+  <main id="news-list" style="max-width: 900px; margin: 0 auto; padding: 1rem;"></main>
+
+  <script>
+    async function loadNews() {
+      try {
+        const res = await fetch("posts/index.json");
+        const posts = await res.json();
+
+        const container = document.getElementById("news-list");
+        container.innerHTML = posts.map(post => `
+          <article style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 1rem;">
+            <img src="${post.image}" alt="${post.title}" style="width: 150px; height: 90px; object-fit: cover; border-radius: 12px;">
+            <div>
+              <h2><a href="post.html?date=${post.date}" style="color: inherit; text-decoration: none;">${post.title}</a></h2>
+              <p style="opacity: 0.7;">${new Date(post.date).toLocaleDateString("pl-PL")}</p>
+            </div>
+          </article>
+        `).join("");
+      } catch (error) {
+        document.getElementById("news-list").innerHTML = `<p>Błąd ładowania: ${error.message}</p>`;
+      }
+    }
+
+    loadNews();
+  </script>
 
   <footer>
     <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
   </footer>
-
-  <script>
-    const repoURL = "https://raw.githubusercontent.com/polacyrodacy/Main/main/news/";
-
-    fetch(`${repoURL}index.json`)
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(posts => {
-        const container = document.getElementById('news-list');
-        container.innerHTML = '';
-
-        if (!posts || posts.length === 0) {
-          container.innerHTML = "<p>No news found 😔</p>";
-          return;
-        }
-
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // najnowsze na górze
-
-        for (const post of posts) {
-          const div = document.createElement('div');
-          div.className = 'news-card';
-          div.innerHTML = `
-            <a href="post.html?date=${post.file.replace('.md', '')}">
-              <div class="news-card-content">
-                <h3>${post.title}</h3>
-                <small>${post.date}</small>
-              </div>
-            </a>
-          `;
-          container.appendChild(div);
-        }
-      })
-      .catch(err => {
-        console.error("Błąd przy ładowaniu newsów:", err);
-        document.getElementById('news-list').innerHTML = `<p style="color:red;">Nie udało się wczytać newsów (${err.message}) ⚠️</p>`;
-      });
-  </script>
 
   <script src="/scripts/day-night.js"></script>
 </body>

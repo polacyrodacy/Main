@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,54 +9,50 @@
 </head>
 <body>
   <header>
-    <h1>Aktualność</h1>
-    <a href="news.html">← Wróć do aktualności</a>
+    <a href="news.html">← Back to News</a>
   </header>
 
   <main id="post-container" style="max-width: 800px; margin: 0 auto; padding: 1rem;">
-    <h2 id="post-title"></h2>
+    <img id="post-image" src="" alt="" style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 14px; margin-bottom: 1rem; display: none;">
+    <h1 id="post-title"></h1>
     <p id="post-date" style="opacity: 0.7;"></p>
     <article id="post-content" style="margin-top: 1rem;"></article>
   </main>
 
   <script>
     async function loadPost() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const date = urlParams.get("date");
-
-      if (!date) {
-        document.getElementById("post-container").innerHTML = "<p>Brak daty w adresie URL.</p>";
-        return;
-      }
+      const params = new URLSearchParams(window.location.search);
+      const date = params.get("date");
 
       try {
-        // Pobierz index.json
         const res = await fetch("posts/index.json");
         const posts = await res.json();
 
-        // Znajdź post po dacie
         const post = posts.find(p => p.date === date);
         if (!post) {
-          document.getElementById("post-container").innerHTML = "<p>Nie znaleziono aktualności.</p>";
+          document.getElementById("post-container").innerHTML = "<p>Nie znaleziono posta.</p>";
           return;
         }
 
-        // Ustaw tytuł i datę
+        // Ustaw dane posta
         document.getElementById("post-title").textContent = post.title;
-        document.getElementById("post-date").textContent = new Date(post.date).toLocaleDateString("pl-PL");
+        document.getElementById("post-date").textContent = new Date(post.date).toLocaleDateString("en-EN");
+        document.title = `${post.title} – Polacy Rodacy`;
 
-        // Pobierz plik markdown
-        const mdResponse = await fetch(`posts/${post.file}`);
-        if (!mdResponse.ok) throw new Error("Błąd ładowania pliku markdown");
+        // Jeśli jest obrazek — pokaż
+        if (post.image) {
+          const img = document.getElementById("post-image");
+          img.src = post.image;
+          img.alt = post.title;
+          img.style.display = "block";
+        }
 
-        const markdown = await mdResponse.text();
+        // Pobierz markdown
+        const md = await (await fetch(`posts/${post.file}`)).text();
+        document.getElementById("post-content").innerHTML = marked.parse(md);
 
-        // Przekonwertuj markdown na HTML
-        const html = marked.parse(markdown);
-        document.getElementById("post-content").innerHTML = html;
-
-      } catch (error) {
-        document.getElementById("post-container").innerHTML = `<p>Błąd ładowania posta: ${error.message}</p>`;
+      } catch (err) {
+        document.getElementById("post-container").innerHTML = `<p>Błąd: ${err.message}</p>`;
       }
     }
 
@@ -64,3 +60,4 @@
   </script>
 </body>
 </html>
+
