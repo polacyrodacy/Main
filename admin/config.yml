@@ -9,7 +9,7 @@ public_folder: "/assets/images"  # jak będą widoczne na stronie
 collections:
   - name: "news"
     label: "News"
-    folder: "../news"  # tu masz już pliki .md
+    folder: "news"  # tu masz już pliki .md
     create: true
     slug: "{{slug}}"
     fields:
