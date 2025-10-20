@@ -10,5 +10,11 @@
     "title": "Nowy turniej!",
     "date": "2025-10-09",
     "image": "assets/images/post2.jpg"
+  },
+  {
+    "file": "2025-10-20.md",
+    "title": "News are here",
+    "date": "2025-10-20",
+    "image": "assets/images/post3.jpg"
   }
 ]
