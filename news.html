@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News | Polacy Rodacy</title>
+  <link rel="icon" type="image/png" href="assets/images/PR.png">
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <nav>
@@ -13,7 +14,7 @@
       <span class="logo">Polacy Rodacy</span>
       <ul class="nav-links">
         <li><a href="/Main/index.html">Home</a></li>
-        <li><a href="/Main/news.html" class="active">News</a></li>
+        <li><a href="/Main/news.html">News</a></li>
       </ul>
       <button id="theme-toggle" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;" title="Toggle theme">
         <i class="fas fa-moon"></i>
@@ -21,11 +22,12 @@
     </div>
   </nav>
 
-  <main>
-    <section id="news">
-      <h2>Latest News</h2>
-      <div id="news-list" class="news-grid">Loading posts...</div>
-    </section>
+  <header>
+    <h1>#BRAWL STARS NEWS</h1>
+  </header>
+
+  <main id="news-list">
+    <p>Loading...</p>
   </main>
 
   <footer>
@@ -33,40 +35,44 @@
   </footer>
 
   <script>
-  const repoURL = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
+    const repoURL = "https://raw.githubusercontent.com/polacyrodacy/Main/main/news/";
 
-  fetch(repoURL + "index.json")
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.json();
-    })
-    .then(posts => {
-      const container = document.getElementById('news-list');
-      container.innerHTML = '';
+    fetch(`${repoURL}index.json`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(posts => {
+        const container = document.getElementById('news-list');
+        container.innerHTML = '';
 
-      if (!posts || posts.length === 0) {
-        container.innerHTML = "<p>No news found 😔</p>";
-        return;
-      }
+        if (!posts || posts.length === 0) {
+          container.innerHTML = "<p>No news found 😔</p>";
+          return;
+        }
 
-      for (const post of posts) {
-        const div = document.createElement('div');
-        div.className = 'news-card';
-        div.innerHTML = `
-          <div class="news-card-content">
-            <h3><a href="post.html?date=${post.date}">${post.title}</a></h3>
-            <small>${post.date}</small>
-          </div>
-        `;
-        container.appendChild(div);
-      }
-    })
-    .catch(err => {
-      console.error("Błąd przy ładowaniu newsów:", err);
-      document.getElementById('news-list').innerHTML = `<p style="color:red;">Failed to load news (${err.message}) ⚠️</p>`;
-    });
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date)); // najnowsze na górze
+
+        for (const post of posts) {
+          const div = document.createElement('div');
+          div.className = 'news-card';
+          div.innerHTML = `
+            <a href="post.html?date=${post.file.replace('.md', '')}">
+              <div class="news-card-content">
+                <h3>${post.title}</h3>
+                <small>${post.date}</small>
+              </div>
+            </a>
+          `;
+          container.appendChild(div);
+        }
+      })
+      .catch(err => {
+        console.error("Błąd przy ładowaniu newsów:", err);
+        document.getElementById('news-list').innerHTML = `<p style="color:red;">Nie udało się wczytać newsów (${err.message}) ⚠️</p>`;
+      });
   </script>
 
-  <script src="scripts/day-night.js"></script>
+  <script src="/scripts/day-night.js"></script>
 </body>
 </html>
