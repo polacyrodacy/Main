@@ -1,55 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>News | Polacy Rodacy</title>
-  <link rel="stylesheet" href="style/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aktualność – Polacy Rodacy</title>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="news.html">← Back to News</a>
-  </nav>
+  <header>
+    <h1>Aktualność</h1>
+    <a href="news.html">← Wróć do aktualności</a>
+  </header>
 
-  <main>
-    <div id="post-container">Loading post...</div>
+  <main id="post-container" style="max-width: 800px; margin: 0 auto; padding: 1rem;">
+    <h2 id="post-title"></h2>
+    <p id="post-date" style="opacity: 0.7;"></p>
+    <article id="post-content" style="margin-top: 1rem;"></article>
   </main>
 
   <script>
-  const repoURL = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
-  const params = new URLSearchParams(window.location.search);
-  const date = params.get('date');
+    async function loadPost() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const date = urlParams.get("date");
 
-  async function loadPost() {
-    try {
-      const indexRes = await fetch(repoURL + "index.json");
-      const posts = await indexRes.json();
-      const post = posts.find(p => p.date === date);
-
-      if (!post) {
-        document.getElementById("post-container").innerHTML = "<p>Post not found 😢</p>";
+      if (!date) {
+        document.getElementById("post-container").innerHTML = "<p>Brak daty w adresie URL.</p>";
         return;
       }
 
-      const mdRes = await fetch(repoURL + post.file);
-      const mdText = await mdRes.text();
-      const html = marked.parse(mdText);
+      try {
+        // Pobierz index.json
+        const res = await fetch("posts/index.json");
+        const posts = await res.json();
 
-      document.getElementById("post-container").innerHTML = `
-        <article class="news-article">
-          <h1>${post.title}</h1>
-          <small>${post.date}</small>
-          <div class="news-body">${html}</div>
-        </article>
-      `;
-    } catch (err) {
-      document.getElementById("post-container").innerHTML = "<p>Failed to load post ⚠️</p>";
-      console.error(err);
+        // Znajdź post po dacie
+        const post = posts.find(p => p.date === date);
+        if (!post) {
+          document.getElementById("post-container").innerHTML = "<p>Nie znaleziono aktualności.</p>";
+          return;
+        }
+
+        // Ustaw tytuł i datę
+        document.getElementById("post-title").textContent = post.title;
+        document.getElementById("post-date").textContent = new Date(post.date).toLocaleDateString("pl-PL");
+
+        // Pobierz plik markdown
+        const mdResponse = await fetch(`posts/${post.file}`);
+        if (!mdResponse.ok) throw new Error("Błąd ładowania pliku markdown");
+
+        const markdown = await mdResponse.text();
+
+        // Przekonwertuj markdown na HTML
+        const html = marked.parse(markdown);
+        document.getElementById("post-content").innerHTML = html;
+
+      } catch (error) {
+        document.getElementById("post-container").innerHTML = `<p>Błąd ładowania posta: ${error.message}</p>`;
+      }
     }
-  }
 
-  loadPost();
+    loadPost();
   </script>
 </body>
 </html>
