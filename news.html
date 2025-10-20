@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>News | Polacy Rodacy</title>
-  <link rel="icon" type="image/png" href="assets/images/PR.png">
+  <link rel="icon" href="assets/images/PR.png">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
@@ -13,49 +14,82 @@
     <div class="nav-container">
       <span class="logo">Polacy Rodacy</span>
       <ul class="nav-links">
-        <li><a href="/Main/index.html">Home</a></li>
-        <li><a href="/Main/news.html">News</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html" class="active">News</a></li>
       </ul>
-      <button id="theme-toggle" style="background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;" title="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
+      <button id="theme-toggle" title="Toggle theme"><i class="fas fa-moon"></i></button>
     </div>
   </nav>
 
-  <header>
-    <h1>#BRAWL STARS NEWS</h1>
-  </header>
+  <header><h1>#BRAWL STARS NEWS</h1></header>
 
-  <main id="news-list" style="max-width: 900px; margin: 0 auto; padding: 1rem;"></main>
+  <main id="news-list" class="news-grid">
+    <p>Loading...</p>
+  </main>
 
-  <script>
-    async function loadNews() {
-      try {
-        const res = await fetch("posts/index.json");
-        const posts = await res.json();
+  <footer><p>&copy; 2025 Polacy Rodacy</p></footer>
 
-        const container = document.getElementById("news-list");
-        container.innerHTML = posts.map(post => `
-          <article style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 1rem;">
-            <img src="${post.image}" alt="${post.title}" style="width: 150px; height: 90px; object-fit: cover; border-radius: 12px;">
-            <div>
-              <h2><a href="post.html?date=${post.date}" style="color: inherit; text-decoration: none;">${post.title}</a></h2>
-              <p style="opacity: 0.7;">${new Date(post.date).toLocaleDateString("pl-PL")}</p>
-            </div>
-          </article>
-        `).join("");
-      } catch (error) {
-        document.getElementById("news-list").innerHTML = `<p>Błąd ładowania: ${error.message}</p>`;
+<script>
+(async function(){
+  const repoRawBase = "https://raw.githubusercontent.com/polacyrodacy/polacyrodacy/main/news/";
+  const listEl = document.getElementById('news-list');
+
+  try {
+    const res = await fetch(repoRawBase + "index.json");
+    if (!res.ok) {
+      const txt = await res.text();
+      console.error("index.json fetch not OK:", res.status, txt);
+      listEl.innerHTML = `<p style="color:red;">Failed to load index.json (HTTP ${res.status}). Check repo path.</p>`;
+      return;
+    }
+
+    // verify content-type or try parse
+    const contentType = res.headers.get('content-type') || '';
+    let posts;
+    if (contentType.includes('application/json')) {
+      posts = await res.json();
+    } else {
+      // try to parse but print raw if fails
+      const raw = await res.text();
+      try { posts = JSON.parse(raw); }
+      catch(e){
+        console.error("index.json is not valid JSON. Raw response:", raw);
+        listEl.innerHTML = `<p style="color:red;">index.json is invalid JSON — open raw URL in browser to inspect. Check console.</p>`;
+        return;
       }
     }
 
-    loadNews();
-  </script>
+    if (!Array.isArray(posts) || posts.length === 0) {
+      listEl.innerHTML = "<p>No news found 😔</p>";
+      return;
+    }
 
-  <footer>
-    <p>&copy; 2025 Polacy Rodacy. All rights reserved.</p>
-  </footer>
+    // render cards (with image if present)
+    listEl.innerHTML = '';
+    posts.sort((a,b)=> new Date(b.date) - new Date(a.date));
+    posts.forEach((post) => {
+      const imgSrc = post.image || 'assets/images/PR.png'; // fallback
+      const card = document.createElement('article');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <a href="post.html?date=${encodeURIComponent(post.date)}" style="display:block;text-decoration:none;color:inherit;">
+          <img src="${imgSrc}" alt="${post.title}" style="width:100%;height:160px;object-fit:cover;display:block;">
+          <div class="news-card-content">
+            <h3>${post.title}</h3>
+            <small>${post.date}</small>
+          </div>
+        </a>
+      `;
+      listEl.appendChild(card);
+    });
 
-  <script src="/scripts/day-night.js"></script>
+  } catch(err) {
+    console.error("Fetch error:", err);
+    listEl.innerHTML = `<p style="color:red;">Network/error fetching index.json — open console for details.</p>`;
+  }
+})();
+</script>
+
+<script src="scripts/day-night.js"></script>
 </body>
 </html>
