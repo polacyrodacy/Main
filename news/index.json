@@ -16,5 +16,11 @@
     "title": "News are here",
     "date": "2025-10-20",
     "image": "assets/images/post3.jpg"
+  },
+  {
+    "file": "2025-10-21.md",
+    "title": "Partnership Announcement",
+    "date": "2025-10-21",
+    "image": "assets/images/post4.jpg"
   }
 ]
