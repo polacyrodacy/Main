@@ -1,18 +1,21 @@
 backend:
   name: github
-  repo: polacyrodacy/polacyrodacy  # Twój prawdziwy repozytorium
+  repo: polacyrodacy/Main
   branch: main
 
-media_folder: "assets/images"  # gdzie trafiają obrazki (lokalnie)
-public_folder: "/assets/images"  # jak będą widoczne na stronie
+media_folder: "assets/images"   # gdzie zapisujesz obrazki
+public_folder: "/assets/images"
 
 collections:
   - name: "news"
     label: "News"
-    folder: "news"  # tu masz już pliki .md
+    folder: "Main/news"
     create: true
-    slug: "{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
     fields:
       - { label: "Tytuł", name: "title", widget: "string" }
-      - { label: "Data publikacji", name: "date", widget: "datetime" }
-      - { label: "Treść", name: "body", widget: "markdown" }  # WYSIWYG edytor
+      - { label: "Data", name: "date", widget: "datetime" }
+      - { label: "Obrazek", name: "image", widget: "image" }
+      - { label: "Treść", name: "body", widget: "markdown" }
