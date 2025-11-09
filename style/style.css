@@ -56,6 +56,7 @@ html, body {
 
 /* ====== HEADER ====== */
 header {
+  padding-top: 60px; 
   background-color: var(--accent);
   color: #fff;
   padding: 2rem 1rem;
@@ -80,16 +81,16 @@ header p {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.4rem 1.5rem; /* zmniejszony padding pionowy */
-  background: rgba(0, 0, 0, 0.25);
+  padding: 0.3rem 1.5rem; /* mniejszy padding */
+  background: rgba(0,0,0,0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  height: auto; /* dostosowuje się do paddingu */
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: 50px; /* określona wysokość navbaru */
 }
 
 .nav-container {
