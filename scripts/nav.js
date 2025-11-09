@@ -1,19 +1,22 @@
-const toggle = document.getElementById('nav-toggle');
-const overlay = document.getElementById('nav-overlay');
-const panel = document.getElementById('nav-panel');
-const close = document.getElementById('nav-close');
+ // Pobieramy elementy
+  const navToggle = document.querySelector('.nav-toggle');
+  const navPanel = document.querySelector('.nav-panel');
+  const navOverlay = document.querySelector('.nav-overlay');
+  const navClose = document.querySelector('.nav-close');
 
-toggle.addEventListener('click', () => {
-  overlay.classList.add('show');
-  panel.classList.add('show');
-});
+  // Funkcja otwierania panelu
+  function openNav() {
+    navPanel.classList.add('show');
+    navOverlay.classList.add('show');
+  }
 
-overlay.addEventListener('click', () => {
-  overlay.classList.remove('show');
-  panel.classList.remove('show');
-});
+  // Funkcja zamykania panelu
+  function closeNav() {
+    navPanel.classList.remove('show');
+    navOverlay.classList.remove('show');
+  }
 
-close.addEventListener('click', () => {
-  overlay.classList.remove('show');
-  panel.classList.remove('show');
-});
+  // Eventy
+  navToggle.addEventListener('click', openNav);
+  navClose.addEventListener('click', closeNav);
+  navOverlay.addEventListener('click', closeNav);
