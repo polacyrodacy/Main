@@ -102,8 +102,9 @@ header p {
 
 /* ====== LOGO ====== */
 .nav-logo img {
-  height: 40px;
-  transition: transform 0.3s ease;
+  height: 40px;       /* wysokość logo */
+  width: auto;        /* zachowaj proporcje */
+  max-width: 100%;    /* nie wychodzi poza kontener */
 }
 
 .nav-logo img:hover {
