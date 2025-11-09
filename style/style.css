@@ -102,7 +102,7 @@ header p {
 
 /* ====== LOGO ====== */
 .nav-logo img {
-  height: auto;
+  height: 40px;
   transition: transform 0.3s ease;
 }
 
