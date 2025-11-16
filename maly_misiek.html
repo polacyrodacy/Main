@@ -4,26 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PR | maly_misiek</title>
-
   <link rel="icon" type="image/png" href="assets/images/PR.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style/style.css">
 
-  <!-- OG tags -->
-  <meta property="og:title" content="Polacy Rodacy - Esports Team">
-  <meta property="og:description" content="Official website of Polacy Rodacy, Brawl Stars team.">
-  <meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
-  <meta property="og:url" content="https://polacyrodacy.github.io/Main/index.html">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
-  <meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
-  <meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+<!-- OG TAGI -->
+<meta property="og:title" content="Polacy Rodacy - Esports Team">
+<meta property="og:description" content="Official website of Polacy Rodacy, Brawl Stars team.">
+<meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+<meta property="og:url" content="https://polacyrodacy.github.io/Main/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
+<meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
+<meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
 
 <style>
 
-/* ===========================================
-   PLAYER INTRO (CR style)
-=========================================== */
+/* ========================================= */
+/* ========= STAGE 1 — SPAM NICKÓW ========= */
+/* ========================================= */
+
+.stage1 {
+  position: fixed;
+  inset: 0;
+  background: black;
+  overflow: hidden;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.stage1 .names {
+  font-size: 4rem;
+  color: white;
+  opacity: 0;
+  animation: flyUp 1s ease forwards;
+}
+
+@keyframes flyUp {
+  from { transform: translateY(200px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ========================================= */
+/* ======= STAGE 2 — STRZAŁKOWE CUT ======== */
+/* ========================================= */
+
+.stage2 {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 5rem;
+  color: white;
+  animation: stage2Show 0.6s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes stage2Show {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ========================================= */
+/* ======= STAGE 3 — EPICKIE INTRO ========= */
+/* ========================================= */
 
 .player-intro {
   position: relative;
@@ -31,16 +82,23 @@
   height: 100vh;
   overflow: hidden;
   background: var(--bg);
+  opacity: 0;
+  animation: showMainIntro 0.8s ease forwards;
+  animation-delay: 1.8s;
 }
 
-/* BACKGROUND BLUR */
+@keyframes showMainIntro {
+  to { opacity: 1; }
+}
+
+/* === BACKGROUND === */
 .intro-bg {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(130,0,0,0.2), rgba(130,0,0,0.05));
   backdrop-filter: blur(20px);
   opacity: 0;
-  animation: bgEnter 0.8s ease forwards;
+  animation: bgEnter 0.8s ease 2s forwards;
 }
 
 @keyframes bgEnter {
@@ -48,14 +106,14 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* AVATAR */
+/* === AVATAR === */
 .intro-avatar {
   position: absolute;
   right: -200px;
   bottom: 0;
   height: 80%;
   opacity: 0;
-  animation: avatarEnter 0.9s cubic-bezier(0.25, 1, 0.3, 1) 0.3s forwards;
+  animation: avatarEnter 0.9s cubic-bezier(0.25, 1, 0.3, 1) 2.3s forwards;
 }
 
 @keyframes avatarEnter {
@@ -63,18 +121,17 @@
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* NICK TEXT */
+/* === TEXT === */
 .intro-name {
   position: absolute;
   left: 5%;
   top: 50%;
   transform: translateY(-50%);
   font-size: 5rem;
-  font-weight: 900;
   color: var(--accent);
   letter-spacing: 0.2em;
   opacity: 0;
-  animation: nameEnter 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+  animation: nameEnter 1s cubic-bezier(0.22, 1, 0.36, 1) 2.4s forwards;
 }
 
 @keyframes nameEnter {
@@ -90,14 +147,12 @@
   }
 }
 
-header { display: none; } /* Ty i tak masz custom intro */
-
 </style>
 </head>
 
 <body>
 
-<!-- ============ NAVBAR (Twój, działający) ============ -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
     <div class="nav-logo">
@@ -118,7 +173,7 @@ header { display: none; } /* Ty i tak masz custom intro */
   </div>
 </nav>
 
-<!-- SIDE PANEL -->
+<!-- PANEL BOCZNY -->
 <div class="nav-overlay"></div>
 <div class="nav-panel">
   <div class="nav-close">&times;</div>
@@ -133,7 +188,34 @@ header { display: none; } /* Ty i tak masz custom intro */
   </ul>
 </div>
 
-<!-- ============ PLAYER INTRO ANIMATION ============ -->
+<!-- TYTUŁ -->
+<header>
+  <h1>PR | maly_misiek</h1>
+  <p>maly_misiek</p>
+</header>
+
+<!-- ===================================================== -->
+<!-- ===================  STAGE 1  ======================== -->
+<!-- ===================================================== -->
+
+<div class="stage1">
+  <div class="names">
+    maly_misiek — maly_misiek — maly_misiek — maly_misiek — PR | maly_misiek —
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ===================  STAGE 2  ======================== -->
+<!-- ===================================================== -->
+
+<div class="stage2">
+  ➜
+</div>
+
+<!-- ===================================================== -->
+<!-- ===================  STAGE 3  ======================== -->
+<!-- ===================================================== -->
+
 <div class="player-intro">
 
   <div class="intro-bg"></div>
@@ -144,15 +226,17 @@ header { display: none; } /* Ty i tak masz custom intro */
 
 </div>
 
-<!-- ============ CONTENT SECTION ============ -->
 <div class="player-content">
-  <!-- tu wstawisz opis, statystyki, grafiki -->
+  <!-- Profil gracza tutaj -->
 </div>
 
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("intro-active");
-});
+/* Usuwamy stage po odtworzeniu animacji */
+setTimeout(() => {
+  document.querySelector(".stage1").style.display = "none";
+  document.querySelector(".stage2").style.display = "none";
+}, 2000);
 </script>
 
 </body>
