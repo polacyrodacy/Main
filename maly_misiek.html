@@ -4,19 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PR | maly_misiek</title>
+
   <link rel="icon" type="image/png" href="assets/images/PR.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/style.css">
 
-<meta property="og:title" content="Polacy Rodacy - Esports Team">
-<meta property="og:description" content="Official website of Polacy Rodacy, Brawl Stars team.">
-<meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
-<meta property="og:url" content="https://polacyrodacy.github.io/Main/index.html">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
-<meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
-<meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
-<style>.player-intro {
+  <!-- OG tags -->
+  <meta property="og:title" content="Polacy Rodacy - Esports Team">
+  <meta property="og:description" content="Official website of Polacy Rodacy, Brawl Stars team.">
+  <meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+  <meta property="og:url" content="https://polacyrodacy.github.io/Main/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
+  <meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
+  <meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+
+<style>
+
+/* ===========================================
+   PLAYER INTRO (CR style)
+=========================================== */
+
+.player-intro {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -24,7 +33,7 @@
   background: var(--bg);
 }
 
-/* === BACKGROUND === */
+/* BACKGROUND BLUR */
 .intro-bg {
   position: absolute;
   inset: 0;
@@ -39,7 +48,7 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* === AVATAR === */
+/* AVATAR */
 .intro-avatar {
   position: absolute;
   right: -200px;
@@ -54,13 +63,14 @@
   to   { transform: translateX(0); opacity: 1; }
 }
 
-/* === TEXT / NICK === */
+/* NICK TEXT */
 .intro-name {
   position: absolute;
   left: 5%;
   top: 50%;
   transform: translateY(-50%);
   font-size: 5rem;
+  font-weight: 900;
   color: var(--accent);
   letter-spacing: 0.2em;
   opacity: 0;
@@ -80,10 +90,15 @@
   }
 }
 
+header { display: none; } /* Ty i tak masz custom intro */
+
 </style>
 </head>
+
 <body>
-  <nav class="navbar">
+
+<!-- ============ NAVBAR (Twój, działający) ============ -->
+<nav class="navbar">
   <div class="nav-container">
     <div class="nav-logo">
       <img src="assets/images/PR.png" alt="Polacy Rodacy Logo">
@@ -103,7 +118,7 @@
   </div>
 </nav>
 
-<!-- PANEL BOCZNY I OVERLAY -->
+<!-- SIDE PANEL -->
 <div class="nav-overlay"></div>
 <div class="nav-panel">
   <div class="nav-close">&times;</div>
@@ -117,10 +132,8 @@
     <li><a href="/Main/news.html">News</a></li>
   </ul>
 </div>
-  <header>
-    <h1>PR | maly_misiek</h1>
-    <p>maly_misiek</p>
-  </header>
+
+<!-- ============ PLAYER INTRO ANIMATION ============ -->
 <div class="player-intro">
 
   <div class="intro-bg"></div>
@@ -131,9 +144,9 @@
 
 </div>
 
-
+<!-- ============ CONTENT SECTION ============ -->
 <div class="player-content">
-  <!-- tu wstawiasz profil gracza -->
+  <!-- tu wstawisz opis, statystyki, grafiki -->
 </div>
 
 <script>
@@ -143,3 +156,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 </body>
+</html>
