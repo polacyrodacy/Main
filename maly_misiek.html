@@ -16,83 +16,68 @@
 <meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
 <meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
 <meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
-<style>/* ===== ANIMACJA CAŁEGO EKRANU ===== */
-.cr-intro {
-  position: fixed;
-  top: 0;
-  left: 0;
+<style>.player-intro {
+  position: relative;
   width: 100%;
   height: 100vh;
-  background: #000;
   overflow: hidden;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: var(--bg);
 }
 
-/* ===== BIAŁY FLASH ===== */
-.cr-flash {
+/* === BACKGROUND === */
+.intro-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #fff;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(130,0,0,0.2), rgba(130,0,0,0.05));
+  backdrop-filter: blur(20px);
   opacity: 0;
-  animation: flashAnim 0.6s ease-out forwards;
+  animation: bgEnter 0.8s ease forwards;
 }
 
-@keyframes flashAnim {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  60% { opacity: 0.6; }
-  100% { opacity: 0; }
+@keyframes bgEnter {
+  from { opacity: 0; transform: scale(1.05); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-/* ===== PRZEJEŻDŻAJĄCY PAS ŚWIATŁA ===== */
-.cr-light-sweep {
+/* === AVATAR === */
+.intro-avatar {
   position: absolute;
-  left: -100%;
-  top: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
-  transform: skewX(-20deg);
-  animation: sweepAnim 1.1s ease-out 0.2s forwards;
-}
-
-@keyframes sweepAnim {
-  0% { left: -100%; }
-  100% { left: 120%; }
-}
-
-/* ===== RENDER GRACZA ===== */
-.cr-player {
+  right: -200px;
+  bottom: 0;
+  height: 80%;
   opacity: 0;
-  transform: scale(1.3);
-  filter: brightness(0.3);
-  animation: playerZoom 1.1s ease-out 0.3s forwards;
+  animation: avatarEnter 0.9s cubic-bezier(0.25, 1, 0.3, 1) 0.3s forwards;
 }
 
-@keyframes playerZoom {
+@keyframes avatarEnter {
+  from { transform: translateX(200px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+/* === TEXT / NICK === */
+.intro-name {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  opacity: 0;
+  animation: nameEnter 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+}
+
+@keyframes nameEnter {
   0% {
     opacity: 0;
-    transform: scale(1.3);
-    filter: brightness(0.3);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(1.05);
-    filter: brightness(1);
+    transform: translateY(-50%) translateX(-50px);
+    letter-spacing: 0.5em;
   }
   100% {
     opacity: 1;
-    transform: scale(1.0);
+    transform: translateY(-50%) translateX(0);
+    letter-spacing: 0.05em;
   }
-}
-
-/* ===== RESZTA STRONY ===== */
-.player-content {
-  opacity: 0;
 }
 
 </style>
@@ -136,11 +121,16 @@
     <h1>PR | maly_misiek</h1>
     <p>maly_misiek</p>
   </header>
-<div class="cr-intro">
-  <div class="cr-flash"></div>
-  <div class="cr-light-sweep"></div>
-  <img src="player.png" alt="Player Render" class="cr-player">
+<div class="player-intro">
+
+  <div class="intro-bg"></div>
+
+  <img src="IMG_GRACZA.png" class="intro-avatar">
+
+  <h1 class="intro-name">maly_misiek</h1>
+
 </div>
+
 
 <div class="player-content">
   <!-- tu wstawiasz profil gracza -->
@@ -148,21 +138,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const intro = document.querySelector(".cr-intro");
-  const content = document.querySelector(".player-content");
-
-  setTimeout(() => {
-    intro.style.opacity = "0";
-    intro.style.transition = "opacity 0.6s ease";
-    
-    setTimeout(() => {
-      intro.style.display = "none";
-    }, 600);
-
-    content.style.transition = "opacity 0.6s ease";
-    content.style.opacity = "1";
-
-  }, 1500); // czas = długość animacji intro
+  document.body.classList.add("intro-active");
 });
 </script>
 
