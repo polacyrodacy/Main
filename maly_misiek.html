@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PR | maly_misiek</title>
+  <link rel="icon" type="image/png" href="assets/images/PR.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style/style.css">
+
+<meta property="og:title" content="Polacy Rodacy - Esports Team">
+<meta property="og:description" content="Official website of Polacy Rodacy, Brawl Stars team.">
+<meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+<meta property="og:url" content="https://polacyrodacy.github.io/Main/index.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Polacy Rodacy - Esports Brawl Stars Team">
+<meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
+<meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+<style>.player-intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Subtelny rozbłysk/cr-fx */
+.player-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), rgba(0,0,0,0.9)),
+              url('bg-light.png') center/cover no-repeat;
+  opacity: 0;
+  animation: bgFade 1.3s ease forwards;
+}
+
+@keyframes bgFade {
+  0% { opacity: 0; transform: scale(1.2); filter: blur(20px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* Karta zawodnika – animacja wejścia jak legendarna karta */
+.player-card {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.6);
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  color: white;
+  opacity: 0;
+  animation: cardPop 1.1s cubic-bezier(.21,.98,.6,1.23) 0.4s forwards;
+}
+
+.player-card img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid rgba(255,255,255,0.5);
+}
+
+@keyframes cardPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(150px) scale(0.5);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-20px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+</style>
+</head>
+<body>
+  <nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="assets/images/PR.png" alt="Polacy Rodacy Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/Main/index.html">Home</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#tournaments">Tournaments</a></li>
+      <li><a href="#next-tournament">Next</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="/Main/news.html">News</a></li>
+    </ul>
+
+    <div class="nav-toggle">&#9776;</div>
+  </div>
+</nav>
+
+<!-- PANEL BOCZNY I OVERLAY -->
+<div class="nav-overlay"></div>
+<div class="nav-panel">
+  <div class="nav-close">&times;</div>
+  <ul>
+    <li><a href="/Main/index.html">Home</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#tournaments">Tournaments</a></li>
+    <li><a href="#next-tournament">Next</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/Main/news.html">News</a></li>
+  </ul>
+</div>
+  <header>
+    <h1>PR | maly_misiek</h1>
+    <p>maly_misiek</p>
+  </header>
+<div class="player-intro">
+  <div class="player-bg"></div>
+  <div class="player-card">
+    <img src="player-avatar.png" alt="Player Avatar">
+    <h1>PR | maly_misiek</h1>
+    <p>Brawl Stars Esports Player</p>
+  </div>
+</div>
+
+</body>
