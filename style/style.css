@@ -318,25 +318,23 @@ header p {
 footer {
   background: var(--footer-bg);
   color: var(--footer-text);
-  padding: 2.5rem 1rem 1rem;
+
+  padding: 4rem 1rem 2rem;
   margin-top: 4rem;
   text-align: left;
-  transition: background 0.4s ease;
 }
 
 .footer-content {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: auto;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .footer-column {
-  min-width: 220px;
   flex: 1;
+  min-width: 240px;
 
   display: flex;
   flex-direction: column;
@@ -345,13 +343,14 @@ footer {
 
 .footer-column h3 {
   color: var(--accent);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 footer a {
   color: var(--footer-text) !important;
-  text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 footer a:hover {
@@ -359,26 +358,19 @@ footer a:hover {
 }
 
 .footer-social {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   display: flex;
   gap: 1rem;
 }
 
 .footer-social a {
-  font-size: 1.6rem;
-  color: var(--footer-text);
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-social a:hover {
-  transform: scale(1.1);
-  color: var(--accent);
+  font-size: 1.7rem;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 0.85rem;
 }
 
