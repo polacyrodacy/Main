@@ -95,6 +95,14 @@ ul {
   padding-left: 20px;
 }
 
+.flag {
+  width: 18px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+
 
 /* ===========================================================
    4) GENERIC LAYOUT
