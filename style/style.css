@@ -478,6 +478,81 @@ header p {
   margin: 0;
 }
 
+/* ===========================================================
+   12) MEMBERS GRID (members.html)
+   =========================================================== */
+
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+ .member-card {
+  background: linear-gradient(145deg, #8b0000, #400000);
+  border-radius: 18px;
+  padding: 20px;
+  width: 220px;
+  text-align: center;
+  color: white;
+  transition: 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  will-change: transform;
+}
+
+.member-card img {
+  width: 100%;
+  border-radius: 12px;
+  transition: 0.4s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(130,0,0,0.8);
+}
+
+.member-card:hover img {
+  transform: scale(1.08);
+}
+
+.member-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.18),
+    transparent 60%
+  );
+  transform: translateX(-120%) rotate(0deg);
+  transition: none;
+}
+
+.member-card:hover::before {
+  animation: shineMove 0.9s ease forwards;
+}
+
+@keyframes shineMove {
+  0% {
+    transform: translateX(-120%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(120%) rotate(0deg);
+  }
+}
+
+
+.member-card:hover::before {
+  transform: translateX(100%);
+}
+
+
 
 /* ===========================================================
    12) FOOTER

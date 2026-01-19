@@ -30,80 +30,6 @@
   <link rel="icon" type="image/png" href="assets/images/PR.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style/style.css">
-<style>
-  .members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-.member-card {
-  background: #0e0e0e;
-  border-radius: 14px;
-  padding: 18px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.member-card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.member-card h3 {
-  margin: 6px 0 2px;
-  color: white;
-}
-
-.member-card span {
-  font-size: 13px;
-  color: #aaa;
-}
-
-.member-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px rgba(130,0,0,0.6);
-}
-
-.cr-members {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.cr-member {
-  position: relative;
-  height: 170px;
-  background: white;
-  border: 2px solid red;
-  overflow: hidden;
-  padding: 20px;
-}
-
-.cr-text {
-  font-size: 32px;
-  font-weight: 800;
-  color: red;
-  z-index: 2;
-  position: relative;
-}
-
-.cr-img {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  height: 190px;
-  pointer-events: none;
-}
-
-@media(max-width: 768px){
-  .cr-members {
-    grid-template-columns: 1fr;
-  }
-}
-
-</style>
 </head>
 <body>
   <nav class="navbar">
@@ -119,6 +45,9 @@
       <li><a href="#next-tournament">Next</a></li>
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="/Main/news.html">News</a></li>
+      <li><a href="/Main/rumours.html">Rumours</a></li>
+      <li><a href="/Main/transfers.html">Transfers</a></li>
+      <li><a href="/Main/teams.html">Teams</a></li>
     </ul>
 
     <div class="nav-toggle">&#9776;</div>
@@ -132,10 +61,12 @@
     <li><a href="/Main/index.html">Home</a></li>
     <li><a href="#team">Team</a></li>
     <li><a href="#tournaments">Tournaments</a></li>
-    <li><a href="#next-tournament">Next</a></li>
+    <!--<li><a href="#next-tournament">Next</a></li>-->
     <li><a href="#timeline">Timeline</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="/Main/news.html">News</a></li>
+    <li><a href="/Main/rumours.html">Rumours</a></li>
+    <li><a href="/Main/transfers.html">Transfers</a></li>
+    <li><a href="/Main/teams.html">Teams</a></li>
   </ul>
 </div>
   <header>
@@ -143,39 +74,69 @@
     <p>Official Brawl Stars Esports Team</p>
   </header>
   <main>
-    <!--<section id="members" style="max-width:900px;margin:2rem auto;padding:0 1rem;">
+  <section id="members-grid" style="max-width:1000px;margin:2rem auto;padding:0 1rem;">
       <h2>Team Members</h2>
       <div class="members-grid">
 
-  <div class="member-card">
-    <img src="players/misiek.png" alt="maly_misiek">
-    <h3>maly_misiek</h3>
-    <span>Player</span>
-  </div>
-
-  <div class="member-card">
-    <img src="players/lamoref.png" alt="Lamoref">
-    <h3>Igmen</h3>
-    <span>Streamer</span>
-  </div>-->
-
-  <div class="cr-members">
-
-  <div class="cr-member">
-    <div class="cr-text">MALY_MISIEK</div>
-    <img src="assets/players/maly_misiek.png" class="cr-img">
-  </div>
-
-  <div class="cr-member">
-    <div class="cr-text">MOYA</div>
-    <img src="players/moya.png" class="cr-img">
-  </div>
-
+      <a href="maly_misiek.html">
+        <div class="member-card">
+  <img src="assets/players/maly_misiek.png" alt="maly_misiek">
+  <h3>maly_misiek</h3>
+  <span>Player</span>
 </div>
-
+      </a>
+<a href="igmen.html">
+<div class="member-card">
+  <img src="assets/players/igmen.png" alt="Igmen">
+  <h3>Igmen</h3>
+  <span>Streamer</span>
 </div>
-
+      </a>
+  </div>
     </section>
   </main>
+
   <script src="scripts/nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".member-card"), {
+  max: 15,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.3,
+});
+  </script>
+   <footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h3>POLACY RODACY</h3>
+      <p>Competitive Brawl Stars team representing Poland and Europe.</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#roster">Roster</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="/Main/news.html">News</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Contact</h3>
+      <p>Follow us on:</p>
+      <div class="footer-social">
+        <a href="https://discord.gg/yxAfBwUXcu" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://x.com/Polacy_Rodacy" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/@Polacy_Rodacy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024-2026 Polacy Rodacy. All rights reserved.</p>
+  </div>
+</footer>
 </body>
