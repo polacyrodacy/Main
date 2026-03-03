@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Zero Empire | Polacy Rodacy</title>
+  <title>Igmen | Polacy Rodacy</title>
 
   <!-- SEO -->
   <meta name="description" content="Polacy Rodacy is a Polish Brawl Stars esports team. Tournaments, roster, results, and competitive Brawl Stars content.">
@@ -13,7 +13,7 @@
   <meta name="author" content="Polacy Rodacy">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph (Discord / Facebook / Liquipedia) -->
+  <!-- Open Graph  -->
   <meta property="og:title" content="Polacy Rodacy – Esports Team">
   <meta property="og:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
   <meta property="og:type" content="website">
@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<nav class="navbar">
+  <nav class="navbar">
   <div class="nav-container">
     <div class="nav-logo">
       <img src="assets/images/PR.png" alt="Polacy Rodacy Logo">
@@ -69,82 +69,98 @@
     <li><a href="/Main/transfers.html">Transfers</a></li>
     <li><a href="/Main/teams.html">Teams</a></li>
   </ul>
-</div>
-<br>
-<div class="page">
-
-  <h1 class="page-title">Zero Empire</h1>
-  <nav class="team-tabs">
-    <a href="" class="tab active">
-        <img src="assets/images/ZE.png" class="tab-icon" alt="Zero Empire">Zero Empire
-    </a>
-    <a href="zeroempireemea.html" class="tab">
-      <img src="assets/images/ZE.png" class="tab-icon" alt="Zero Empire EMEA">Zero Empire EMEA
-    </a>
-  </nav>
-  <p class="intro">
-    Zero Empire is a Mexican Brawl Stars organization competing in community
-    and semi-professional tournaments.
-  </p>
-
-  <aside class="infobox">
-    <h2>Zero Empire</h2>
-    <div class="infobox-image">
-    <img src="assets/images/ZE.png" alt="Zero Empire logo">
   </div>
-    <h2>Team Information</h2>
-    <table>
-      <tr><td>Tag</td><td>ZE (old: "ZERO")</td></tr>
-      <tr><td>Region</td><td>NA</td></tr>
-      <tr><td>Country</td><td><img src="assets/flags/mx.svg" class="flag">Mexico</td></tr>
-      <tr><td>Game</td><td>Brawl Stars</td></tr>
-      <tr><td>Status</td><td>Active</td></tr>
-      <tr><td>Created</td><td>April 2025</td></tr>
-      <tr><td>Total Winnings</td><td>0$</td></tr>
-    </table>
-  </aside>
-
-  <section>
-    <h2>Active Roster</h2>
-    <ul>
-      <li><img src="assets/flags/mx.svg" class="flag"><strong>Nito</strong> - Captain (31.08.2025 - 12.10.2025, from 07.01.2026)</li>
-      <li><img src="assets/flags/gt.svg" class="flag">Wal (from 07.01.2026)</li>
-      <li><img src="assets/flags/ni.svg" class="flag">Pollo G (from 07.01.2026)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Management</h2>
-    <ul>
-      <li><img src="assets/flags/jp.svg" class="flag">Noim - Analyst (from 17.09.2025)</li>
-      <li>Xsafzis - Analyst (from 04.12.2025)</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Loreme - Manager and CEO</li>
-      <li><img src="assets/flags/hk.svg" class="flag">Bearguba - Designer</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Former Players/Staff</h2>
-    <ul>
-      <li><img src="assets/flags/mx.svg" class="flag">Red Tooth - 08.12.2025 - 04.01.2026</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Machine - 08.12.2025 - 04.01.2026</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Terios - 08.12.2025 - 04.01.2026</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Zarvx - 08.12.2025 - 04.01.2026</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Loreme - 09.07.2025 - 12.10.2025</li>
-      <li><img src="assets/flags/co.svg" class="flag">Joel - 09.07.2025 - 12.10.2025</li>
-      <li><img src="assets/flags/mx.svg" class="flag">Hisato - 09.07.2025 - 31.08.2025</li>
-      <li>Yuzaki - Coach</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Results</h2>
-    <ul>
-      
-    </ul>
-  </section>
+<div class="intro">
+  <div class="intro-mask">
+    <div class="nick-wall"></div>
+  </div>
+</div>
 
 </div>
+  <header>
+    <h1>Polacy Rodacy</h1>
+    <p>Official Brawl Stars Esports Team</p>
+  </header>
+
+<div class="cr-profile">
+  <div class="bg-name">IGMEN</div>
+  <img src="assets/players/igmen.png" class="character">
+  <h1 class="player-nick">Igmen</h1>
+</div>
+
+<script>
+const intro = document.querySelector(".intro");
+const wall = document.querySelector(".nick-wall");
+
+const bg = document.querySelector(".bg-name");
+const char = document.querySelector(".character");
+const nickMain = document.querySelector(".player-nick");
+
+const COLS = 6;
+const ROWS = 11;
+let currentRow = 0;
+
+// create columns
+const columns = [];
+for (let i = 0; i < COLS; i++) {
+  const col = document.createElement("div");
+  col.className = "nick-column";
+  wall.appendChild(col);
+  columns.push(col);
+}
+
+// add rows like CR
+function addRow() {
+  columns.forEach(col => {
+    const n = document.createElement("div");
+    n.className = "nick";
+    n.innerText = "Igmen";
+    col.appendChild(n);
+
+    if (col.children.length > ROWS) {
+      col.removeChild(col.firstChild);
+    }
+
+    requestAnimationFrame(() => {
+      n.style.opacity = "1";
+      n.style.transform = "translateY(0)";
+    });
+  });
+
+  currentRow++;
+
+  if (currentRow < ROWS) {
+    setTimeout(addRow, 45);
+  } else {
+    setTimeout(startWipe, 80);
+  }
+}
+
+// slide wall out
+function startWipe() {
+  intro.classList.add("hide");
+  setTimeout(startCharacterIntro, 1000);
+}
+
+// show player
+function startCharacterIntro() {
+  bg.style.transform = "translateX(0) skewX(0deg)";
+  char.classList.add("enter");
+
+  setTimeout(() => {
+    nickMain.style.opacity = "1";
+    nickMain.style.transform = "translateY(0)";
+  }, 350);
+}
+
+
+
+window.addEventListener("load", addRow);
+</script>
+
+
+
+
  <footer>
   <div class="footer-content">
     <div class="footer-column">
@@ -155,10 +171,10 @@
     <div class="footer-column">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="rumours.html">Rumours</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#roster">Roster</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="/Main/news.html">News</a></li>
       </ul>
     </div>
 
@@ -178,5 +194,6 @@
   </div>
 </footer>
 <script src="scripts/nav.js"></script>
+<script src="scripts/day-night.js"></script>
 </body>
 </html>

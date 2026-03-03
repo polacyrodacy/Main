@@ -552,10 +552,322 @@ header p {
   transform: translateX(100%);
 }
 
+/* ===========================================================
+   13) for players profile page
+   =========================================================== */
+
+.cr-profile {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.6));
+  z-index: 1;
+}
+
+.bg-name {
+  position: absolute;
+  font-size: 180px;
+  font-weight: 900;
+  opacity: 0.07;
+  transform: translateX(-120%) skewX(-10deg);
+  transition: 1s cubic-bezier(.15,.9,.2,1);
+  white-space: nowrap;
+}
+
+.character {
+  position: absolute;
+  right: 40px;
+  bottom: -40px;
+  max-height: 110%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(120px) scale(0.9);
+}
+.character.enter {
+  animation: glitchIn 0.6s steps(2, end) forwards;
+}
+
+.player-nick {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s ease;
+}
+@media (max-width: 768px) {
+
+  .cr-profile {
+    height: 460px;
+  }
+
+  .bg-name {
+  position: absolute;
+  left: 0;
+  top: 120px;
+
+  font-weight: 900;
+  opacity: 0.07;
+  white-space: nowrap;
+  line-height: 0.9;
+
+  transform: skewX(-10deg);
+  pointer-events: none;
+
+  font-size: 180px; /* max, JS to skoryguje */
+}
+
+@media (max-width: 768px) {
+  .bg-name {
+    top: 80px;
+    font-size: clamp(48px, 18vw, 96px);
+  }
+}
+
+
+
+  .character {
+  position: absolute;
+  right: 40px;
+  bottom: -40px;
+  height: 110%;
+  max-height: 720px;
+  opacity: 0;
+  transform: translateY(120px) scale(0.9);
+}
+@media (max-width: 1600px) {
+  .character {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .character {
+    height: 90%;
+    right: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .character {
+    height: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .character {
+    height: 70%;
+    right: 50%;
+    transform: translateX(50%) translateY(120px) scale(0.9);
+  }
+}
+
+
+  .character.enter {
+    animation: glitchInMobile 0.6s steps(2, end) forwards;
+  }
+
+  .player-nick {
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%) translateY(30px);
+    text-align: center;
+    font-size: 28px;
+  }
+}
+
+/* ===== INTRO WALL ===== */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 50;
+
+  overflow: hidden; 
+  transform: translateX(0);
+  transition: transform 1s cubic-bezier(.7,0,.2,1);
+}
+
+
+.intro.hide {
+  transform: translateX(100%);
+}
+
+
+
+/* WALL GRID */
+
+.nick-wall {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+  position: absolute;
+  inset: 0;
+  padding: 40px;
+}
+@media (max-width: 1600px) {
+  .nick-wall {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .nick-wall {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nick-wall {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nick-wall {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+.nick-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-height: 100%;
+}
+
+
+.nick {
+  font-size: 32.5px;
+  font-weight: 800;
+  color: rgb(130,0,0);
+  opacity: 0;
+  transform: translateY(40px);
+  text-shadow:
+    0 0 10px rgba(130,0,0,.6),
+    0 0 20px rgba(130,0,0,.3);
+  transition: .18s ease-out;
+  text-align: center;
+}
+
+.intro-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden; 
+}
+@keyframes glitchIn {
+  0% {
+    opacity: 0;
+    transform: translateY(120px) scale(0.9);
+    filter: none;
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(80px) translateX(-4px) scale(1);
+    filter: drop-shadow(-3px 0 red) drop-shadow(3px 0 cyan);
+  }
+  40% {
+    transform: translateY(40px) translateX(4px);
+    filter: drop-shadow(3px 0 red) drop-shadow(-3px 0 cyan);
+  }
+  60% {
+    transform: translateY(10px) translateX(-2px);
+    filter: drop-shadow(-2px 0 red) drop-shadow(2px 0 cyan);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+}
+@keyframes glitchInMobile {
+  0% {
+    opacity: 0;
+    transform: translateX(50%) translateY(120px) scale(0.9);
+    filter: none;
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(48%) translateY(60px);
+    filter: drop-shadow(-3px 0 red) drop-shadow(3px 0 cyan);
+  }
+  60% {
+    transform: translateX(52%) translateY(20px);
+    filter: drop-shadow(2px 0 red) drop-shadow(-2px 0 cyan);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(50%) translateY(0) scale(1);
+    filter: none;
+  }
+}
+
+.character.glitch {
+  animation: glitchIn 0.6s steps(2, end) forwards;
+}
+
+.player-info {
+  width: 100%;
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 60px;
+  color: #000000;
+}
+
+.info-title {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin-bottom: 40px;
+}
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.info-label {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.info-value {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: right;
+  justify-self: end;
+}
+
+@media (max-width: 768px) {
+  .info-row {
+    grid-template-columns: 1fr;
+  }
+
+  .info-value {
+    text-align: left;
+    justify-self: start;
+  }
+}
 
 
 /* ===========================================================
-   12) FOOTER
+   14) FOOTER
    =========================================================== */
 footer {
   background: var(--footer-bg);
@@ -612,7 +924,7 @@ footer a:hover {
 
 
 /* ===========================================================
-   13) RESPONSIVE
+   15) RESPONSIVE
    =========================================================== */
 @media (max-width: 850px) {
   .nav-links { display: none; }
