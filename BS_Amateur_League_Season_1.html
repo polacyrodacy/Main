@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basics -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Brawl Stars Amateur League - Season 1</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Polacy Rodacy is a Polish Brawl Stars esports team. Tournaments, roster, results, and competitive Brawl Stars content.">
+  <meta name="keywords" content="Polacy Rodacy, Brawl Stars esports, Brawl Stars team, Polish esports, Brawl Stars tournaments, Poland, esport">
+  <meta name="author" content="Polacy Rodacy">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (Discord / Facebook / Liquipedia) -->
+  <meta property="og:title" content="Polacy Rodacy – Esports Team">
+  <meta property="og:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://polacyrodacy.github.io/Main/">
+  <meta property="og:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Polacy Rodacy – Brawl Stars Esports Team">
+  <meta name="twitter:description" content="Official website of Polacy Rodacy, Polish Brawl Stars esports team.">
+  <meta name="twitter:image" content="https://polacyrodacy.github.io/Main/assets/images/og-main.jpg">
+
+  <!-- Icons & Styles -->
+  <link rel="icon" type="image/png" href="assets/images/PR.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style/style.css">
+  <style>
+
+.country-flag {
+  width: 18px;
+  height: 12px;
+
+  object-fit: cover;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   PRPEDIA - TOURNAMENT WIKI
+   Teams + Match Weeks + Standings
+   ========================================================= */
+
+
+/* =========================================================
+   TEAMS
+   ========================================================= */
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+
+/* Team block */
+
+.team-table {
+  background: #11131d;
+  border: 1px solid #30333d;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+/* Team name */
+
+/* =========================================================
+   TEAM HEADER
+   ========================================================= */
+
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+
+  background: #1b1d25;
+  border-bottom: 1px solid #30333d;
+  color: #eeeeee;
+}
+
+
+/* Team logo */
+
+.team-logo {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* Team name */
+
+.team-header h3 {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.team-header h3 a {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+.team-header h3 a:hover {
+  color: #820000;
+}
+
+.team-table h3 a {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+.team-table h3 a:hover {
+  color: #820000;
+}
+
+
+/* Players table */
+
+.team-table table {
+  width: 100%;
+  margin: 0;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.team-table th {
+  padding: 6px 10px;
+
+  background: #171922;
+  color: #8f95a6;
+
+  font-size: 10px;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+
+  border-bottom: 1px solid #292c35;
+}
+
+.team-table td {
+  padding: 7px 10px;
+
+  color: #e4e6eb;
+  font-size: 12px;
+
+  border-bottom: 1px solid #242730;
+}
+
+.team-table tr:last-child td {
+  border-bottom: none;
+}
+
+.team-table th:last-child,
+.team-table td:last-child {
+  width: 90px;
+  text-align: right;
+}
+
+.team-table a {
+  color: #e4e6eb;
+  text-decoration: none;
+}
+
+.team-table a:hover {
+  color: #820000;
+}
+
+
+/* =========================================================
+   MATCH WEEKS
+   ========================================================= */
+
+.match-weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+
+/* Match Week box */
+
+.match-week {
+  min-width: 0;
+
+  background: #11131d;
+
+  border: 1px solid #30333d;
+  border-radius: 5px;
+
+  overflow: hidden;
+}
+
+
+/* Match Week title */
+
+.match-week > h3 {
+  margin: 0;
+
+  padding: 8px 7px;
+
+  background: #202126;
+  color: #eeeeee;
+
+  border-bottom: 1px solid #34363e;
+
+  font-size: 15px;
+  line-height: 1.2;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   MATCH TABLE
+   ========================================================= */
+
+.match-week-table {
+  width: 100%;
+  margin: 0;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+
+/* Table header */
+
+.match-week-table thead th {
+  padding: 5px 4px;
+
+  background: #181a22;
+  color: #858b9c;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  text-align: center;
+
+  border-bottom: 1px solid #292c35;
+}
+
+
+/* Team columns */
+
+.match-week-table th:first-child,
+.match-week-table th:last-child {
+  width: 42%;
+}
+
+
+/* Score column */
+
+.match-week-table th:nth-child(2) {
+  width: 16%;
+}
+
+
+/* Match rows */
+
+.match-week-table td {
+  height: 38px;
+
+  padding: 5px 7px;
+
+  color: #e6e8ed;
+
+  font-size: 12px;
+
+  border-bottom: 1px solid #242730;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-week-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Left team */
+
+.match-week-table td:first-child {
+  text-align: left;
+}
+
+
+/* Score */
+
+.match-week-table td:nth-child(2) {
+  text-align: center;
+
+  color: #c9ccd5;
+
+  font-weight: 700;
+}
+
+
+/* Right team */
+
+.match-week-table td:last-child {
+  text-align: right;
+}
+
+
+/* Links */
+
+.match-week-table a {
+  color: #e6e8ed;
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.match-week-table a:hover {
+  color: #820000;
+}
+
+
+/* Hover */
+
+.match-week-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.match-week-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+
+/* =========================================================
+   COMPLETED MATCHES
+   ========================================================= */
+
+.match-week-table tr.finished td:nth-child(2) {
+  color: #ffffff;
+}
+
+.match-week-table .winner {
+  font-weight: 800;
+}
+
+.match-week-table .loser {
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   STANDINGS
+   ========================================================= */
+
+.standings-container {
+  width: 100%;
+
+  background: #11131d;
+
+  border: 1px solid #30333d;
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Standings table */
+
+.standings-table {
+  width: 100%;
+  margin: 0;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+
+/* =========================================================
+   STANDINGS HEADER
+   ========================================================= */
+
+.standings-table thead th {
+  padding: 8px 10px;
+
+  background: #1b1d25;
+  color: #8f95a6;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  text-align: center;
+
+  border-bottom: 1px solid #30333d;
+}
+
+
+/* Position */
+
+.standings-table th:first-child {
+  width: 45px;
+}
+
+
+/* Team */
+
+.standings-table th:nth-child(2) {
+  width: auto;
+  text-align: left;
+}
+
+
+/* Statistic columns */
+
+.standings-table th:nth-child(n + 3) {
+  width: 65px;
+}
+
+
+/* =========================================================
+   STANDINGS BODY
+   ========================================================= */
+
+.standings-table td {
+  padding: 9px 10px;
+
+  color: #e6e8ed;
+
+  font-size: 12px;
+
+  border-bottom: 1px solid #242730;
+
+  text-align: center;
+}
+
+.standings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* Position */
+
+.standings-table td:first-child {
+  color: #858b9c;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* Team */
+
+.standings-table td:nth-child(2) {
+  text-align: left;
+
+  font-weight: 600;
+}
+
+.standings-table td:nth-child(2) a {
+  color: #e6e8ed;
+
+  text-decoration: none;
+}
+
+.standings-table td:nth-child(2) a:hover {
+  color: #820000;
+}
+
+
+/* Points */
+
+.standings-table td:last-child {
+  font-weight: 800;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   STANDINGS HOVER
+   ========================================================= */
+
+.standings-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.standings-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+
+
+
+/* =========================================================
+   TOP 3
+   ========================================================= */
+
+.standings-table tr.rank-1 td:first-child {
+  color: #d7b85a;
+}
+
+.standings-table tr.rank-2 td:first-child {
+  color: #bfc3ca;
+}
+
+.standings-table tr.rank-3 td:first-child {
+  color: #b47b52;
+}
+
+
+/* =========================================================
+   POSITIVE / NEGATIVE
+   ========================================================= */
+
+.standings-table .positive {
+  color: #6fcf7b;
+}
+
+.standings-table .negative {
+  color: #d86b6b;
+}
+
+
+/* =========================================================
+   PLAYOFF QUALIFICATION
+   ========================================================= */
+
+/* PLAYOFFS: 1–3 */
+
+.standings-table tr.playoff-zone td {
+  background: rgba(95, 159, 107, 0.13);
+}
+
+.standings-table tr.playoff-zone {
+  box-shadow: inset 3px 0 0 #5f9f6b;
+}
+
+.standings-table tr.playoff-zone td:first-child {
+  color: #78b984;
+}
+
+
+/* LCQ: 4–5 */
+
+.standings-table tr.lcq-zone td {
+  background: rgba(184, 148, 69, 0.13);
+}
+
+.standings-table tr.lcq-zone {
+  box-shadow: inset 3px 0 0 #b89445;
+}
+
+.standings-table tr.lcq-zone td:first-child {
+  color: #d0aa55;
+}
+
+
+/* ELIMINATED: 6–10 */
+
+.standings-table tr.eliminated-zone td {
+  background: rgba(160, 82, 82, 0.07);
+}
+
+.standings-table tr.eliminated-zone {
+  box-shadow: inset 3px 0 0 #a05252;
+}
+
+.standings-table tr.eliminated-zone td:first-child {
+  color: #b96a6a;
+}
+
+
+/* =========================================================
+   RED UNDERLINE — END OF ELIMINATED ZONE
+   ========================================================= */
+
+.standings-table tr.eliminated-zone:last-child td {
+  border-bottom: 2px solid #a05252;
+}
+
+/* =========================================================
+   STANDINGS LEGEND
+   ========================================================= */
+
+.standings-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  background: #171922;
+
+  border-top: 1px solid #30333d;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: #d2d5dd;
+
+  border-radius:6px;
+}
+
+
+/* Legend item */
+
+.standings-legend > span {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 5px 9px;
+
+  background: #11131d;
+
+  border: 1px solid #30333d;
+  border-radius: 6px;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+/* Colored indicator */
+
+.standings-legend > span > span {
+  width: 10px;
+  height: 10px;
+
+  flex-shrink: 0;
+
+  display: block;
+
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   PLAYOFFS
+   ========================================================= */
+
+.legend-playoffs {
+  border-color: rgba(95, 159, 107, 0.55) !important;
+
+  background: rgba(95, 159, 107, 0.10) !important;
+
+  box-shadow:
+    inset 3px 0 0 #5f9f6b,
+    0 0 10px rgba(95, 159, 107, 0.12);
+}
+
+.legend-playoffs > span {
+  background: #5f9f6b;
+
+  box-shadow:
+    0 0 8px rgba(95, 159, 107, 0.45);
+}
+
+
+/* =========================================================
+   LCQ
+   ========================================================= */
+
+.legend-lcq {
+  border-color: rgba(184, 148, 69, 0.55) !important;
+
+  background: rgba(184, 148, 69, 0.10) !important;
+
+  box-shadow:
+    inset 3px 0 0 #b89445,
+    0 0 10px rgba(184, 148, 69, 0.12);
+}
+
+.legend-lcq > span {
+  background: #b89445;
+
+  box-shadow:
+    0 0 8px rgba(184, 148, 69, 0.45);
+}
+
+
+/* =========================================================
+   ELIMINATED
+   ========================================================= */
+
+.legend-eliminated {
+  border-color: rgba(160, 82, 82, 0.55) !important;
+
+  background: rgba(160, 82, 82, 0.07) !important;
+
+  box-shadow:
+    inset 3px 0 0 #a05252,
+    0 0 10px rgba(160, 82, 82, 0.10);
+}
+
+.legend-eliminated > span {
+  background: #a05252;
+
+  box-shadow:
+    0 0 8px rgba(160, 82, 82, 0.45);
+}
+
+/* =========================================================
+   COUNTRY REPRESENTATION
+   ========================================================= */
+
+.country-table {
+  width: 100%;
+
+  background: #11131d;
+
+  border: 1px solid #30333d;
+  border-radius: 6px;
+
+  overflow: hidden;
+}
+
+
+/* Row */
+.country-row {
+  display: grid;
+
+  grid-template-columns: 180px 120px 1fr;
+
+  align-items: center;
+
+  min-height: 42px;
+
+  padding: 0 12px;
+
+  border-bottom: 1px solid #242730;
+
+  color: #e6e8ed;
+
+  font-size: 12px;
+}
+
+.country-count {
+  color: #ffffff;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+/* Last row */
+
+.country-row:last-child {
+  border-bottom: none;
+}
+
+
+/* Header */
+
+.country-header {
+  min-height: 34px;
+
+  background: #1b1d25;
+
+  color: #8f95a6;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid #30333d;
+}
+
+
+/* Country */
+
+.country-name {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-weight: 600;
+}
+
+
+/* Player count */
+
+.country-row > span:nth-child(2) {
+  color: #ffffff;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+/* Bar background */
+
+.country-bar {
+  height: 8px;
+
+  width: 100%;
+
+  background: #242730;
+
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+
+/* Bar */
+
+.country-bar > span {
+  display: block;
+
+  height: 100%;
+
+  background: #820000;
+
+  border-radius: 4px;
+
+  transition: width 0.2s ease;
+}
+
+
+/* Hover */
+
+.country-row:not(.country-header) {
+  transition: background 0.15s ease;
+}
+
+.country-row:not(.country-header):hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .country-row {
+    grid-template-columns: 150px 55px 1fr;
+
+    padding: 0 10px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .match-weeks-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .teams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .match-weeks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .standings-container {
+    overflow-x: auto;
+  }
+
+  .standings-table {
+    min-width: 600px;
+  }
+
+}
+
+
+@media (max-width: 550px) {
+
+  .match-weeks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .match-week-table td {
+    font-size: 11px;
+  }
+
+}
+
+/* PLAYOFFS */
+.standings-table tr.playoff-zone td {
+  background: rgba(95, 159, 107, 0.09);
+}
+
+.standings-table tr.playoff-last td {
+  border-bottom: 2px solid #5f9f6b;
+}
+
+
+/* LCQ */
+.standings-table tr.lcq-zone td {
+  background: rgba(184, 148, 69, 0.09);
+}
+
+.standings-table tr.lcq-last td {
+  border-bottom: 2px solid #b89445;
+}
+
+
+/* ELIMINATED */
+.standings-table tr.eliminated-zone td {
+  background: rgba(160, 82, 82, 0.045);
+}
+
+</style>
+</head>
+
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="assets/images/PR.png" alt="Polacy Rodacy Logo">
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/Main/index.html">Home</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#tournaments">Tournaments</a></li>
+      <li><a href="#next-tournament">Next</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="/Main/news.html">News</a></li>
+      <li><a href="/Main/transfers.html">Transfers</a></li>
+      <li><a href="/Main/teams.html">Teams</a></li>
+    </ul>
+
+    <div class="nav-toggle">&#9776;</div>
+  </div>
+</nav>
+
+<!-- PANEL BOCZNY I OVERLAY -->
+<div class="nav-overlay"></div>
+<div class="nav-panel">
+  <ul>
+    <li><a href="/Main/index.html">Home</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#tournaments">Tournaments</a></li>
+    <!--<li><a href="#next-tournament">Next</a></li>-->
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="/Main/news.html">News</a></li>
+    <li><a href="/Main/transfers.html">Transfers</a></li>
+    <li><a href="/Main/teams.html">Teams</a></li>
+  </ul>
+</div>
+<br>
+<main>
+
+  <div class="page">
+
+    <h1 class="page-title">
+      Brawl Stars Amateur League
+    </h1>
+
+    <!-- INFOBOX -->
+    <aside class="infobox">
+
+      <h2>Brawl Stars Amateur League</h2>
+
+      <div class="infobox-image">
+        <img src="/Main/assets/tournaments/BSAL_logo.jpg"
+             alt="Brawl Stars Amateur League">
+      </div>
+
+      <table>
+        <tr>
+          <td><strong>Series</strong></td>
+          <td>Brawl Stars Amateur League</td>
+        </tr>
+
+        <tr>
+          <td><strong>Organizer</strong></td>
+          <td>CELEST, Polacy Rodacy, ZeroFear</td>
+        </tr>
+
+        <tr>
+          <td><strong>Type</strong></td>
+          <td>Online</td>
+        </tr>
+
+        <tr>
+          <td><strong>Region</strong></td>
+          <td><img src="assets/flags/ue.svg" class="flag" alt="Europe">EMEA</td>
+        </tr>
+
+        <tr>
+          <td><strong>Format</strong></td>
+          <td>
+            <p><strong>Group Stage:</strong> Single Round-Robin</p>
+            <p><strong>LCQ:</strong> Bo7</p>
+            <p><strong>Playoffs:</strong> Single Elimination</p></td></p>
+        </tr>
+
+        <tr>
+          <td><strong>Date</strong></td>
+          <td>08.08.2026-??.??.2026</td>
+        </tr>
+      </table>
+
+    </aside>
+
+
+    <!-- OVERVIEW -->
+    <section>
+
+      <h2>Overview</h2>
+
+      <p>
+        The <strong>Brawl Stars Amateur League</strong> is an
+        amateur Brawl Stars league featuring ten invited teams.
+        The league follows a single round-robin format, with
+        every team playing against every other team once.
+      </p>
+
+    </section>
+
+
+    <!-- FORMAT -->
+    <section>
+
+      <h2>Format</h2>
+
+      <p>
+        Ten teams are directly invited to the league.
+        There are no qualification stages.
+      </p>
+
+      <ul>
+        <li>10 invited teams</li>
+        <li>9 Match Weeks</li>
+        <li>9 matches per team</li>
+        <li>Single round-robin</li>
+      </ul>
+
+      <h3>Point System</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Result</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Win</td>
+            <td>+3</td>
+          </tr>
+
+          <tr>
+            <td>Loss</td>
+            <td>-3 + sets won</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        For example, a 3–1 loss awards the losing team
+        <strong>-2 points</strong>, while a 3–0 loss awards
+        <strong>-3 points</strong>.
+      </p>
+
+    </section>
+
+
+    <!-- PARTICIPANTS -->
+    <section>
+
+  <h2>Teams</h2>
+
+  <div class="teams-grid">
+
+    <!-- Team 1 -->
+    <div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/PR.png" alt="Polacy Rodacy Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="polacyrodacy.html">Polacy Rodacy</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">maly_misiek</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">Igmen</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/se.svg" class="flag" alt="Sweden">Demonic</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/ua.svg" class="flag" alt="Ukraine">ShadowErik</a>
+        </td>
+        <td>Sub</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/uz.svg" class="flag" alt="Uzbekistan">Razer</a>
+        </td>
+        <td>Coach</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div> 
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/ZF.png" alt="Zero Fear Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="zerofear.html">ZeroFear</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/mk.svg" class="flag" alt="Macedonia">Raid</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/rs.svg" class="flag" alt="Serbia">Laki16</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/ua.svg" class="flag" alt="Ukraine">Vincent</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/vn.svg" class="flag" alt="Vietnam">Migchoii</a>
+        </td>
+        <td>Manager</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/mst.png" alt="MST Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">MST</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Mermer</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Xeno</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Blaex</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/OVC.png" alt="Overcome Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Overcome</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/rs.svg" class="flag" alt="Serbia">Dusan</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/de.svg" class="flag" alt="Germany">Styx</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">Oli</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/Blank.png" alt="Italian Trinity Gaming Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Italian Trinity Gaming</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/it.svg" class="flag" alt="Italy">Astreo</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/it.svg" class="flag" alt="Italy">Bestia</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/it.svg" class="flag" alt="Italy">FeRaNdRe</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/it.svg" class="flag" alt="Italy">Mario</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/Blank.png" alt="Phonk Demons Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Phonk Demons</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">Arj2010</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/gb.svg" class="flag" alt="United Kingdom">Hamste</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/fr.svg" class="flag" alt="France">Show Rizo</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">Wazek</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/THO.webp" alt="Turkish Home Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Turkish Home</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Frat</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/es.svg" class="flag" alt="Spain">Destro</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/gr.svg" class="flag" alt="Greece">Idod</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/de.svg" class="flag" alt="Germany">Fabi</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/THOa.png" alt="Turkish Home Academy Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Turkish Home Academy</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/de.svg" class="flag" alt="Germany">Mxry</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Droxz</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/pl.svg" class="flag" alt="Poland">Mentos</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/fr.svg" class="flag" alt="France">Fefe</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/tr.svg" class="flag" alt="Turkey">Humbled</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/KRY.jpg" alt="Kryon Esport Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="#">Kryon Esport</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/ua.svg" class="flag" alt="Ukraine">Puma</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/ua.svg" class="flag" alt="Ukraine">Fantom</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/ua.svg" class="flag" alt="Ukraine">Artson</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="team-table">
+
+  <div class="team-header">
+
+    <div class="team-logo">
+      <img src="/Main/assets/images/CES.png" alt="Celest Logo">
+    </div>
+
+    <div class="team-info">
+      <h3>
+        <a href="celest.html">CELEST Gaming</a>
+      </h3>
+
+      <span>Invited</span>
+    </div>
+
+  </div>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/at.svg" class="flag" alt="Austria">Th3ben</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/es.svg" class="flag" alt="Spain">Noir</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/es.svg" class="flag" alt="Spain">MarTuko</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/gb.svg" class="flag" alt="United Kingdom">Blooper</a>
+        </td>
+        <td>Player</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a href="#"><img src="assets/flags/se.svg" class="flag" alt="Sweden">Botzoid</a>
+        </td>
+        <td>Manager</td>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+
+  </div>
+
+</section>
+
+    <!-- STANDINGS -->
+    <section>
+
+  <h2>Standings</h2>
+
+  <div class="standings-container">
+
+    <table class="standings-table">
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Team</th>
+          <th>W</th>
+          <th>L</th>
+          <th>Sets</th>
+          <th>Diff</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr class="rank-1 playoff-zone">
+          <td>1</td>
+          <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
+          <td>1</td>
+          <td>0</td>
+          <td>3–0</td>
+          <td>3</td>
+          <td>+3</td>
+        </tr>
+
+        <tr class="rank-2 playoff-zone">
+          <td>2</td>
+          <td><a href="#">Phonk Demons</a></td>
+          <td>1</td>
+          <td>0</td>
+          <td>3–0</td>
+          <td>3</td>
+          <td>+3</td>
+        </tr>
+
+        <tr class="rank-3 playoff-zone playoff-last">
+          <td>3</td>
+          <td><a href="#">Turkish Home Academy</a></td>
+          <td>1</td>
+          <td>0</td>
+          <td>3–0</td>
+          <td>3</td>
+          <td>+3</td>
+        </tr>
+
+        <tr class="rank-4 lcq-zone">
+          <td>4</td>
+          <td><a href="#">MST</a></td>
+          <td>1</td>
+          <td>0</td>
+          <td>3–0</td>
+          <td>3</td>
+          <td>+3</td>
+        </tr>
+
+        <tr class="rank-5 lcq-zone lcq-last">
+          <td>5</td>
+          <td><a href="#">Turkish Home</a></td>
+          <td>1</td>
+          <td>0</td>
+          <td>3–1</td>
+          <td>+2</td>
+          <td>+3</td>
+        </tr>
+
+        <tr class="rank-6 eliminated-zone">
+          <td>6</td>
+          <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
+          <td>0</td>
+          <td>1</td>
+          <td>1–3</td>
+          <td>-2</td>
+          <td>-2</td>
+        </tr>
+
+        <tr class="rank-7 eliminated-zone">
+          <td>7</td>
+          <td><a href="#">ZeroFear</a></td>
+          <td>0</td>
+          <td>1</td>
+          <td>0–3</td>
+          <td>-3</td>
+          <td>-3</td>
+        </tr>
+
+        <tr class="rank-8 eliminated-zone">
+          <td>8</td>
+          <td><a href="#">Italian Trinity Gaming</a></td>
+          <td>0</td>
+          <td>1</td>
+          <td>0–3</td>
+          <td>-3</td>
+          <td>-3</td>
+        </tr>
+
+        <tr class="rank-9 eliminated-zone">
+          <td>9</td>
+          <td><a href="#">Kryon Esports</a></td>
+          <td>0</td>
+          <td>1</td>
+          <td>0–3</td>
+          <td>-3</td>
+          <td>-3</td>
+        </tr>
+
+        <tr class="rank-10 eliminated-zone">
+          <td>10</td>
+          <td><a href="#">CELEST Gaming</a></td>
+          <td>0</td>
+          <td>1</td>
+          <td>0–3</td>
+          <td>-3</td>
+          <td>-3</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="standings-legend">
+
+  <span class="legend-playoffs">
+    <span></span> Playoffs
+  </span>
+
+  <span class="legend-lcq">
+    <span></span> LCQ
+  </span>
+
+  <span class="legend-eliminated">
+    <span></span> Eliminated
+  </span>
+
+</div>
+
+</section>
+
+
+    <!-- MATCH WEEKS -->
+    <!-- =========================
+     MATCH WEEKS
+========================== -->
+
+<section>
+
+  <h2>Matches</h2>
+
+  <div class="match-weeks-grid">
+
+
+    <!-- MATCH WEEK 1 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 1</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>
+              <a href="https://overcome-ovc.github.io/home/">Overcome</a>
+            </td>
+
+            <td>W:FF</td>
+
+            <td>
+              <a href="#">Kryon Esports</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="#">CELEST</a>
+            </td>
+
+            <td>FF:W</td>
+
+            <td>
+              <a href="#">THO Academy</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="#">Phonk Demons</a>
+            </td>
+
+            <td>3:0</td>
+
+            <td>
+              <a href="#">ITG</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="#">MST</a>
+            </td>
+
+            <td>3:0</td>
+
+            <td>
+              <a href="#">ZeroFear</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="polacyrodacy.html">Polacy Rodacy</a>
+            </td>
+
+            <td>1:3</td>
+
+            <td>
+              <a href="#">Turkish Home</a>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 2 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 2</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">ZeroFear</a></td>
+            <td>—</td>
+            <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
+          </tr>
+          
+          <tr>
+            <td><a href="#">ITG</a></td>
+            <td>—</td>
+            <td><a href="celest.html">CELEST</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
+            <td>—</td>
+            <td><a href="#">MST</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Turkish Home</a></td>
+            <td>—</td>
+            <td><a href="#">THO Academy</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Kryon Esports</a></td>
+            <td>—</td>
+            <td><a href="#">Phonk Demons</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 3 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 3</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
+            <td>—</td>
+            <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">THO Academy</a></td>
+            <td>—</td>
+            <td><a href="#">FearZero</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">ITG</a></td>
+            <td>—</td>
+            <td><a href="#">Kryon Esports</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="celest.html">CELEST</a></td>
+            <td>—</td>
+            <td><a href="#">THO</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">MST</a></td>
+            <td>—</td>
+            <td><a href="#">Phonk Demons</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 4 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 4</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 7</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 8</a></td>
+            <td>—</td>
+            <td><a href="#">Team 6</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 9</a></td>
+            <td>—</td>
+            <td><a href="#">Team 5</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 10</a></td>
+            <td>—</td>
+            <td><a href="#">Team 4</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 2</a></td>
+            <td>—</td>
+            <td><a href="#">Team 3</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 5 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 5</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 6</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 7</a></td>
+            <td>—</td>
+            <td><a href="#">Team 5</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 8</a></td>
+            <td>—</td>
+            <td><a href="#">Team 4</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 9</a></td>
+            <td>—</td>
+            <td><a href="#">Team 3</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 10</a></td>
+            <td>—</td>
+            <td><a href="#">Team 2</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 6 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 6</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 5</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 6</a></td>
+            <td>—</td>
+            <td><a href="#">Team 4</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 7</a></td>
+            <td>—</td>
+            <td><a href="#">Team 3</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 8</a></td>
+            <td>—</td>
+            <td><a href="#">Team 2</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 9</a></td>
+            <td>—</td>
+            <td><a href="#">Team 10</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 7 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 7</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 4</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 5</a></td>
+            <td>—</td>
+            <td><a href="#">Team 3</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 6</a></td>
+            <td>—</td>
+            <td><a href="#">Team 2</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 7</a></td>
+            <td>—</td>
+            <td><a href="#">Team 10</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 8</a></td>
+            <td>—</td>
+            <td><a href="#">Team 9</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 8 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 8</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 3</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 4</a></td>
+            <td>—</td>
+            <td><a href="#">Team 2</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 5</a></td>
+            <td>—</td>
+            <td><a href="#">Team 10</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 6</a></td>
+            <td>—</td>
+            <td><a href="#">Team 9</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 7</a></td>
+            <td>—</td>
+            <td><a href="#">Team 8</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    <!-- MATCH WEEK 9 -->
+
+    <div class="match-week">
+
+      <h3>Match Week 9</h3>
+
+      <table class="match-week-table">
+
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Score</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td><a href="#">Team 1</a></td>
+            <td>—</td>
+            <td><a href="#">Team 2</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 3</a></td>
+            <td>—</td>
+            <td><a href="#">Team 10</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 4</a></td>
+            <td>—</td>
+            <td><a href="#">Team 9</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 5</a></td>
+            <td>—</td>
+            <td><a href="#">Team 8</a></td>
+          </tr>
+
+          <tr>
+            <td><a href="#">Team 6</a></td>
+            <td>—</td>
+            <td><a href="#">Team 7</a></td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- COUNTRY REPRESENTATION -->
+
+<section>
+
+  <h2>Country Representation</h2>
+
+  <div class="country-table" id="country-representation">
+
+    <div class="country-row country-header">
+      <span>Country</span>
+      <span>Players</span>
+      <span>Representation</span>
+    </div>
+
+  </div>
+
+</section>
+
+  </div>
+
+</main>
+ <footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h3>POLACY RODACY</h3>
+      <p>Competitive Brawl Stars team representing Poland and Europe.</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="rumours.html">Rumours</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>Contact</h3>
+      <p>Follow us on:</p>
+      <div class="footer-social">
+        <a href="https://discord.gg/yxAfBwUXcu" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://x.com/Polacy_Rodacy" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.youtube.com/@Polacy_Rodacy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2024-2026 Polacy Rodacy. All rights reserved.</p>
+  </div>
+</footer>
+<script src="scripts/nav.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const countryTable = document.getElementById("country-representation");
+
+  if (!countryTable) return;
+
+  const players = document.querySelectorAll(
+    ".team-table tbody tr"
+  );
+
+  const countries = {};
+
+  players.forEach(row => {
+
+    const flag = row.querySelector("img.flag");
+
+    if (!flag) return;
+
+    const src = flag.getAttribute("src") || "";
+    const alt = flag.getAttribute("alt") || "Unknown";
+
+    const match = src.match(
+      /\/flags\/([a-z]{2})\.svg/i
+    );
+
+    if (!match) return;
+
+    const countryCode = match[1].toLowerCase();
+
+    if (!countries[countryCode]) {
+
+      countries[countryCode] = {
+        code: countryCode,
+        name: alt,
+        flag: src,
+        players: 0
+      };
+
+    }
+
+    countries[countryCode].players++;
+
+  });
+
+
+  /* =========================
+     TOTAL PLAYERS
+     ========================= */
+
+  const totalPlayers = Object.values(countries)
+    .reduce((total, country) => {
+      return total + country.players;
+    }, 0);
+
+
+  /* =========================
+     SORT
+     ========================= */
+
+  const sortedCountries = Object.values(countries)
+    .sort((a, b) => {
+
+      if (b.players !== a.players) {
+        return b.players - a.players;
+      }
+
+      return a.name.localeCompare(b.name);
+
+    });
+
+
+  /* =========================
+     MAX BAR
+     ========================= */
+
+  const maxPlayers =
+    sortedCountries.length > 0
+      ? sortedCountries[0].players
+      : 1;
+
+
+  /* =========================
+     CREATE ROWS
+     ========================= */
+
+  sortedCountries.forEach(country => {
+
+    const row = document.createElement("div");
+
+    row.className = "country-row";
+
+
+    const percentage =
+      Math.round(
+        (country.players / totalPlayers) * 100
+      );
+
+
+    const barWidth =
+      (country.players / maxPlayers) * 100;
+
+
+    row.innerHTML = `
+
+      <span class="country-name">
+
+        <img
+          src="${country.flag}"
+          class="country-flag"
+          alt="${country.name}"
+        >
+
+        ${country.name}
+
+      </span>
+
+
+      <span class="country-count">
+
+        ${country.players} / ${totalPlayers}
+        (${percentage}%)
+
+      </span>
+
+
+      <span class="country-bar">
+
+        <span
+          style="width: ${barWidth}%"
+        ></span>
+
+      </span>
+
+    `;
+
+
+    countryTable.appendChild(row);
+
+  });
+
+});
+</script>
+</body>
+</html>
