@@ -865,6 +865,70 @@
   background: rgba(255, 255, 255, 0.035);
 }
 
+/* =========================================================
+   STANDINGS CONTROLS
+   ========================================================= */
+
+.standings-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  margin-bottom: 10px;
+  padding: 6px;
+
+  background: #171922;
+
+  border: 1px solid #30333d;
+  border-radius: 6px;
+}
+
+
+/* Switch button */
+
+.standing-switch {
+  padding: 6px 10px;
+
+  background: #11131d;
+  color: #8f95a6;
+
+  border: 1px solid #30333d;
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+
+.standing-switch:hover {
+  color: #eeeeee;
+  border-color: #505462;
+}
+
+
+/* Active */
+
+.standing-switch.active {
+  background: #820000;
+  border-color: #a00000;
+
+  color: #ffffff;
+}
+
+
+/* Current */
+
+.standing-switch[data-week="current"] {
+  margin-left: 4px;
+}
 
 /* =========================================================
    RESPONSIVE
@@ -1742,132 +1806,69 @@
 
   <h2>Standings</h2>
 
-  <div class="standings-container">
+  <div class="standings-controls">
 
-    <table class="standings-table">
+    <button class="standing-switch active" data-week="1">
+      MW 1
+    </button>
 
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Team</th>
-          <th>W</th>
-          <th>L</th>
-          <th>Sets</th>
-          <th>Diff</th>
-          <th>Pts</th>
-        </tr>
-      </thead>
+    <button class="standing-switch" data-week="2">
+      MW 2
+    </button>
 
-      <tbody>
+    <button class="standing-switch" data-week="3">
+      MW 3
+    </button>
 
-        <tr class="rank-1 playoff-zone">
-          <td>1</td>
-          <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
-          <td>2</td>
-          <td>0</td>
-          <td>6–1</td>
-          <td>+5</td>
-          <td>+6</td>
-        </tr>
+    <button class="standing-switch" data-week="4">
+      MW 4
+    </button>
 
-        <tr class="rank-2 playoff-zone">
-          <td>2</td>
-          <td><a href="#">Phonk Demons</a></td>
-          <td>2</td>
-          <td>0</td>
-          <td>6–1</td>
-          <td>+5</td>
-          <td>+6</td>
-        </tr>
+    <button class="standing-switch" data-week="5">
+      MW 5
+    </button>
 
-        <tr class="rank-3 playoff-zone playoff-last">
-          <td>3</td>
-          <td><a href="#">Turkish Home</a></td>
-          <td>2</td>
-          <td>0</td>
-          <td>6–3</td>
-          <td>+3</td>
-          <td>+6</td>
-        </tr>
+    <button class="standing-switch" data-week="6">
+      MW 6
+    </button>
 
-        <tr class="rank-4 lcq-zone">
-                  <td>4</td>
-                  <td><a href="#">Turkish Home Academy</a></td>
-                  <td>1</td>
-                  <td>1</td>
-                  <td>6–3</td>
-                  <td>+3</td>
-                  <td>+6</td>
-                </tr>
+    <button class="standing-switch" data-week="7">
+      MW 7
+    </button>
 
-        <tr class="rank-5 lcq-zone lcq-last ">
-          <td>5</td>
-          <td><a href="#">MST</a></td>
-          <td>1</td>
-          <td>1</td>
-          <td>4–3</td>
-          <td>+1</td>
-          <td>+4</td>
-        </tr>
+    <button class="standing-switch" data-week="8">
+      MW 8
+    </button>
 
-        <tr class="rank-6 eliminated-zone">
-          <td>6</td>
-          <td><a href="#">ZeroFear</a></td>
-          <td>1</td>
-          <td>1</td>
-          <td>3–5</td>
-          <td>-2</td>
-          <td>+3</td>
-        </tr>
+    <button class="standing-switch" data-week="9">
+      MW 9
+    </button>
 
-        <tr class="rank-7 eliminated-zone">
-          <td>7</td>
-          <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
-          <td>0</td>
-          <td>2</td>
-          <td>3–6</td>
-          <td>-3</td>
-          <td>+3</td>
-        </tr>
-
-        <tr class="rank-8 eliminated-zone">
-          <td>8</td>
-          <td><a href="#">Italian Trinity Gaming</a></td>
-          <td>0</td>
-          <td>2</td>
-          <td>0–6</td>
-          <td>-6</td>
-          <td>0</td>
-        </tr>
-
-        <tr class="rank-9 eliminated-zone">
-          <td>9</td>
-          <td><a href="#">CELEST Gaming</a></td>
-          <td>1</td>
-          <td>1</td>
-          <td>3–3</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-
-        <tr class="rank-10 eliminated-zone">
-          <td>10</td>
-          <td><a href="#">Kryon Esports</a></td>
-          <td>0</td>
-          <td>2</td>
-          <td>1–6</td>
-          <td>-5</td>
-          <td>-2</td>
-        </tr>
-
-        
-
-      </tbody>
-
-    </table>
+    <button class="standing-switch" data-week="current">
+      Current
+    </button>
 
   </div>
+<div class="standings-container">
+  <table class="standings-table">
 
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Team</th>
+        <th>W</th>
+        <th>L</th>
+        <th>Sets</th>
+        <th>Diff</th>
+        <th>Pts</th>
+      </tr>
+    </thead>
+
+    <tbody id="standings-body">
+    </tbody>
+
+  </table>
+</div>
   <div class="standings-legend">
 
   <span class="legend-playoffs">
@@ -1917,7 +1918,9 @@
 
         <tbody>
 
-          <tr>
+          <tr data-home="Overcome"
+    data-away="Kryon Esports"
+    data-score="W:FF">
             <td>
               <a href="https://overcome-ovc.github.io/home/">Overcome</a>
             </td>
@@ -1929,7 +1932,9 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-home="CELEST"
+    data-away="Turkish Home Academy"
+    data-score="FF:W">
             <td>
               <a href="#">CELEST</a>
             </td>
@@ -1941,7 +1946,9 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-home="Phonk Demons"
+    data-away="ITG"
+    data-score="3:0">
             <td>
               <a href="#">Phonk Demons</a>
             </td>
@@ -1953,7 +1960,9 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-home="MST"
+    data-away="ZeroFear"
+    data-score="3:0">
             <td>
               <a href="#">MST</a>
             </td>
@@ -1965,7 +1974,9 @@
             </td>
           </tr>
 
-          <tr>
+          <tr data-home="Polacy Rodacy"
+    data-away="Turkish Home"
+    data-score="1:3">
             <td>
               <a href="polacyrodacy.html">Polacy Rodacy</a>
             </td>
@@ -2002,31 +2013,41 @@
 
         <tbody>
 
-          <tr>
+          <tr data-home="ZeroFear"
+    data-away="Polacy Rodacy"
+    data-score="3:2">
             <td><a href="#">ZeroFear</a></td>
             <td>3:2</td>
             <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
           </tr>
-          
-          <tr>
+
+          <tr data-home="ITG"
+    data-away="CELEST"
+    data-score="0:3">
             <td><a href="#">ITG</a></td>
             <td>0:3</td>
             <td><a href="celest.html">CELEST</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="Overcome"
+    data-away="MST"
+    data-score="3:1">
             <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
             <td>3:1</td>
             <td><a href="#">MST</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="Turkish Home"
+    data-away="Turkish Home Academy"
+    data-score="3:2">
             <td><a href="#">Turkish Home</a></td>
             <td>3:2</td>
             <td><a href="#">THO Academy</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="Kryon Esports"
+    data-away="Phonk Demons"
+    data-score="1:3">
             <td><a href="#">Kryon Esports</a></td>
             <td>1:3</td>
             <td><a href="#">Phonk Demons</a></td>
@@ -2057,31 +2078,41 @@
 
         <tbody>
 
-          <tr>
+          <tr data-home="Polacy Rodacy"
+    data-away="Overcome"
+    data-score="—">
             <td><a href="polacyrodacy.html">Polacy Rodacy</a></td>
             <td>—</td>
             <td><a href="https://overcome-ovc.github.io/home/">Overcome</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="Turkish Home Academy"
+    data-away="ZeroFear"
+    data-score="—">
             <td><a href="#">THO Academy</a></td>
             <td>—</td>
-            <td><a href="#">FearZero</a></td>
+            <td><a href="#">ZeroFear</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="ITG"
+    data-away="Kryon Esports"
+    data-score="—">
             <td><a href="#">ITG</a></td>
             <td>—</td>
             <td><a href="#">Kryon Esports</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="CELEST"
+    data-away="THO Academy"
+    data-score="—">
             <td><a href="celest.html">CELEST</a></td>
             <td>—</td>
-            <td><a href="#">THO</a></td>
+            <td><a href="#">Turkish Home</a></td>
           </tr>
 
-          <tr>
+          <tr data-home="MST"
+    data-away="Phonk Demons"
+    data-score="—">
             <td><a href="#">MST</a></td>
             <td>—</td>
             <td><a href="#">Phonk Demons</a></td>
@@ -2623,6 +2654,739 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================================
+     TEAMS
+     ========================================================= */
+
+  const teams = [
+    "Overcome",
+    "Phonk Demons",
+    "Turkish Home Academy",
+    "MST",
+    "Turkish Home",
+    "Polacy Rodacy",
+    "ZeroFear",
+    "ITG",
+    "Kryon Esports",
+    "CELEST"
+  ];
+
+
+  /* =========================================================
+     TEAM LINKS
+     ========================================================= */
+
+  const teamLinks = {
+    "Overcome": "https://overcome-ovc.github.io/home/",
+    "Polacy Rodacy": "polacyrodacy.html",
+    "CELEST": "celest.html"
+  };
+
+
+  /* =========================================================
+     MATCH WEEKS
+     ========================================================= */
+
+  const matchWeeks =
+    document.querySelectorAll(".match-week");
+
+
+  /* =========================================================
+     STANDING TEMPLATE
+     ========================================================= */
+
+  function createStanding() {
+
+    return teams.map(team => ({
+
+      team: team,
+
+      wins: 0,
+      losses: 0,
+
+      setsWon: 0,
+      setsLost: 0,
+
+      points: 0
+
+    }));
+
+  }
+
+
+  /* =========================================================
+     PROCESS MATCH
+     ========================================================= */
+
+  function processMatch(standing, match) {
+
+    const home = match.dataset.home;
+    const away = match.dataset.away;
+    const score = match.dataset.score;
+
+
+    /* Ignore incomplete matches */
+
+    if (
+      !home ||
+      !away ||
+      !score ||
+      score === "—" ||
+      score === ""
+    ) {
+      return;
+    }
+
+
+    /* Find teams */
+
+    const homeTeam =
+      standing.find(team => team.team === home);
+
+    const awayTeam =
+      standing.find(team => team.team === away);
+
+
+    /* Unknown team */
+
+    if (!homeTeam || !awayTeam) {
+      console.warn(
+        "Unknown team:",
+        home,
+        away
+      );
+
+      return;
+    }
+
+
+    /* =====================================================
+       FORFEITS
+       ===================================================== */
+
+    /* Home wins by forfeit */
+
+    if (score === "W:FF") {
+
+      homeTeam.wins++;
+      homeTeam.points += 3;
+
+      awayTeam.losses++;
+      awayTeam.points -= 3;
+
+      return;
+    }
+
+
+    /* Away wins by forfeit */
+
+    if (score === "FF:W") {
+
+      homeTeam.losses++;
+      homeTeam.points -= 3;
+
+      awayTeam.wins++;
+      awayTeam.points += 3;
+
+      return;
+    }
+
+
+    /* =====================================================
+       NORMAL MATCH
+       ===================================================== */
+
+    const parts = score.split(":");
+
+
+    if (parts.length !== 2) {
+      console.warn(
+        "Invalid score:",
+        score
+      );
+
+      return;
+    }
+
+
+    const homeScore =
+      parseInt(parts[0]);
+
+    const awayScore =
+      parseInt(parts[1]);
+
+
+    /* Invalid score */
+
+    if (
+      Number.isNaN(homeScore) ||
+      Number.isNaN(awayScore)
+    ) {
+      console.warn(
+        "Invalid score:",
+        score
+      );
+
+      return;
+    }
+
+
+    /* =====================================================
+       SETS
+       ===================================================== */
+
+    homeTeam.setsWon += homeScore;
+    homeTeam.setsLost += awayScore;
+
+    awayTeam.setsWon += awayScore;
+    awayTeam.setsLost += homeScore;
+
+
+    /* =====================================================
+       POINTS
+
+       Normal match:
+       Points = sets won
+
+       Example:
+       3:2 -> 3 / 2
+       3:0 -> 3 / 0
+       1:3 -> 1 / 3
+       ===================================================== */
+
+    homeTeam.points += homeScore;
+    awayTeam.points += awayScore;
+
+
+    /* =====================================================
+       MATCH RESULT
+       ===================================================== */
+
+    if (homeScore > awayScore) {
+
+      homeTeam.wins++;
+      awayTeam.losses++;
+
+    }
+
+    else if (awayScore > homeScore) {
+
+      awayTeam.wins++;
+      homeTeam.losses++;
+
+    }
+
+  }
+
+
+  /* =========================================================
+     CALCULATE STANDING
+     ========================================================= */
+
+  function calculateStanding(week) {
+
+    const standing =
+      createStanding();
+
+
+    /* Process every Match Week up to selected week */
+
+    for (
+      let i = 0;
+      i < week;
+      i++
+    ) {
+
+      if (!matchWeeks[i]) {
+        continue;
+      }
+
+
+      const matches =
+        matchWeeks[i].querySelectorAll(
+          "tbody tr[data-home]"
+        );
+
+
+      matches.forEach(match => {
+
+        processMatch(
+          standing,
+          match
+        );
+
+      });
+
+    }
+
+
+    /* =====================================================
+       SORTING
+       =====================================================
+
+       1. Points
+       2. Set difference
+       3. Sets won
+       4. Wins
+       */
+
+    standing.sort((a, b) => {
+
+
+      /* Points */
+
+      if (
+        b.points !== a.points
+      ) {
+
+        return (
+          b.points -
+          a.points
+        );
+
+      }
+
+
+      /* Set difference */
+
+      const diffA =
+        a.setsWon -
+        a.setsLost;
+
+      const diffB =
+        b.setsWon -
+        b.setsLost;
+
+
+      if (
+        diffB !== diffA
+      ) {
+
+        return (
+          diffB -
+          diffA
+        );
+
+      }
+
+
+      /* Sets won */
+
+      if (
+        b.setsWon !==
+        a.setsWon
+      ) {
+
+        return (
+          b.setsWon -
+          a.setsWon
+        );
+
+      }
+
+
+      /* Wins */
+
+      if (
+        b.wins !==
+        a.wins
+      ) {
+
+        return (
+          b.wins -
+          a.wins
+        );
+
+      }
+
+
+      /* Alphabetical fallback */
+
+      return a.team.localeCompare(
+        b.team
+      );
+
+    });
+
+
+    return standing;
+
+  }
+
+
+  /* =========================================================
+     TEAM LINK
+     ========================================================= */
+
+  function getTeamLink(team) {
+
+    return (
+      teamLinks[team] ||
+      "#"
+    );
+
+  }
+
+
+  /* =========================================================
+     FORMAT NUMBER
+     ========================================================= */
+
+  function formatPoints(points) {
+
+    if (points > 0) {
+      return "+" + points;
+    }
+
+    return points;
+
+  }
+
+
+  /* =========================================================
+     RENDER STANDING
+     ========================================================= */
+
+  function renderStanding(week) {
+
+    const tbody =
+      document.getElementById(
+        "standings-body"
+      );
+
+
+    if (!tbody) {
+      return;
+    }
+
+
+    const standing =
+      calculateStanding(week);
+
+
+    /* Clear old table */
+
+    tbody.innerHTML = "";
+
+
+    /* =====================================================
+       CREATE ROWS
+       ===================================================== */
+
+    standing.forEach(
+      (team, index) => {
+
+        const rank =
+          index + 1;
+
+
+        const diff =
+          team.setsWon -
+          team.setsLost;
+
+
+        /* =================================================
+           QUALIFICATION ZONE
+           ================================================= */
+
+        let zone = "";
+
+
+        if (rank <= 3) {
+
+          zone =
+            "playoff-zone";
+
+        }
+
+        else if (rank <= 5) {
+
+          zone =
+            "lcq-zone";
+
+        }
+
+        else {
+
+          zone =
+            "eliminated-zone";
+
+        }
+
+
+        /* =================================================
+           CREATE ROW
+           ================================================= */
+
+        const row =
+          document.createElement(
+            "tr"
+          );
+
+
+        row.className =
+          `rank-${rank} ${zone}`;
+
+
+        /* =================================================
+           TEAM NAME
+           ================================================= */
+
+        const link =
+          getTeamLink(
+            team.team
+          );
+
+
+        /* =================================================
+           ROW HTML
+           ================================================= */
+
+        row.innerHTML = `
+
+          <td>
+            ${rank}
+          </td>
+
+
+          <td>
+            <a href="${link}">
+              ${team.team}
+            </a>
+          </td>
+
+
+          <td>
+            ${team.wins}
+          </td>
+
+
+          <td>
+            ${team.losses}
+          </td>
+
+
+          <td>
+            ${team.setsWon}–${team.setsLost}
+          </td>
+
+
+          <td class="${
+            diff >= 0
+              ? "positive"
+              : "negative"
+          }">
+
+            ${
+              diff > 0
+                ? "+"
+                : ""
+            }${diff}
+
+          </td>
+
+
+          <td>
+            ${formatPoints(
+              team.points
+            )}
+          </td>
+
+        `;
+
+
+        tbody.appendChild(
+          row
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     DETECT CURRENT WEEK
+     ========================================================= */
+
+  function getCurrentWeek() {
+
+    let currentWeek = 0;
+
+
+    matchWeeks.forEach(
+      (week, index) => {
+
+        const matches =
+          week.querySelectorAll(
+            "tbody tr[data-score]"
+          );
+
+
+        const hasResults =
+          [...matches].some(
+            match => {
+
+              const score =
+                match.dataset.score;
+
+
+              return (
+                score &&
+                score !== "—" &&
+                score !== ""
+              );
+
+            }
+          );
+
+
+        if (hasResults) {
+
+          currentWeek =
+            index + 1;
+
+        }
+
+      }
+    );
+
+
+    /* If no matches have results */
+
+    if (currentWeek === 0) {
+      currentWeek = 1;
+    }
+
+
+    return currentWeek;
+
+  }
+
+
+  /* =========================================================
+     STANDING SWITCHES
+     ========================================================= */
+
+  const switches =
+    document.querySelectorAll(
+      ".standing-switch"
+    );
+
+
+  switches.forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+
+          /* Remove active */
+
+          switches.forEach(
+            btn => {
+
+              btn.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          /* Activate clicked button */
+
+          button.classList.add(
+            "active"
+          );
+
+
+          /* Get selected week */
+
+          let week;
+
+
+          if (
+            button.dataset.week ===
+            "current"
+          ) {
+
+            week =
+              getCurrentWeek();
+
+          }
+
+          else {
+
+            week =
+              parseInt(
+                button.dataset.week
+              );
+
+          }
+
+
+          /* Render */
+
+          renderStanding(
+            week
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+  /* =========================================================
+     INITIAL STANDING
+     ========================================================= */
+
+  const currentWeek =
+    getCurrentWeek();
+
+
+  /* Activate current week */
+
+  switches.forEach(
+    button => {
+
+      button.classList.remove(
+        "active"
+      );
+
+
+      if (
+        button.dataset.week ===
+        String(currentWeek)
+      ) {
+
+        button.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+  );
+
+
+  /* Render */
+
+  renderStanding(
+    currentWeek
+  );
+
+});
+
 </script>
 </body>
 </html>
