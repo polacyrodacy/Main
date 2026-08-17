@@ -2731,7 +2731,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const score = match.dataset.score;
 
 
-    /* Ignore incomplete matches */
+    /* =====================================================
+       IGNORE INCOMPLETE MATCHES
+       ===================================================== */
 
     if (
       !home ||
@@ -2744,7 +2746,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* Find teams */
+    /* =====================================================
+       FIND TEAMS
+       ===================================================== */
 
     const homeTeam =
       standing.find(team => team.team === home);
@@ -2753,9 +2757,12 @@ document.addEventListener("DOMContentLoaded", () => {
       standing.find(team => team.team === away);
 
 
-    /* Unknown team */
+    /* =====================================================
+       UNKNOWN TEAM
+       ===================================================== */
 
     if (!homeTeam || !awayTeam) {
+
       console.warn(
         "Unknown team:",
         home,
@@ -2768,31 +2775,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        FORFEITS
+       =====================================================
+
+       W:FF = 3:0
+       FF:W = 0:3
+
+       Winner:
+       +1 W
+       +3 sets won
+       +3 points
+
+       Loser:
+       +1 L
+       +0 sets won
+       +3 sets lost
+       -3 points
+
        ===================================================== */
 
-    /* Home wins by forfeit */
+
+    /* -----------------------------------------------------
+       HOME WINS BY FORFEIT
+       ----------------------------------------------------- */
 
     if (score === "W:FF") {
 
-      homeTeam.wins++;
-      homeTeam.points += 3;
+      /* Match result */
 
+      homeTeam.wins++;
       awayTeam.losses++;
+
+
+      /* Sets = 3:0 */
+
+      homeTeam.setsWon += 3;
+      homeTeam.setsLost += 0;
+
+      awayTeam.setsWon += 0;
+      awayTeam.setsLost += 3;
+
+
+      /* Points */
+
+      homeTeam.points += 3;
       awayTeam.points -= 3;
+
 
       return;
     }
 
 
-    /* Away wins by forfeit */
+    /* -----------------------------------------------------
+       AWAY WINS BY FORFEIT
+       ----------------------------------------------------- */
 
     if (score === "FF:W") {
 
-      homeTeam.losses++;
-      homeTeam.points -= 3;
+      /* Match result */
 
+      homeTeam.losses++;
       awayTeam.wins++;
+
+
+      /* Sets = 0:3 */
+
+      homeTeam.setsWon += 0;
+      homeTeam.setsLost += 3;
+
+      awayTeam.setsWon += 3;
+      awayTeam.setsLost += 0;
+
+
+      /* Points */
+
+      homeTeam.points -= 3;
       awayTeam.points += 3;
+
 
       return;
     }
@@ -2806,6 +2864,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (parts.length !== 2) {
+
       console.warn(
         "Invalid score:",
         score
@@ -2822,12 +2881,15 @@ document.addEventListener("DOMContentLoaded", () => {
       parseInt(parts[1]);
 
 
-    /* Invalid score */
+    /* =====================================================
+       INVALID SCORE
+       ===================================================== */
 
     if (
       Number.isNaN(homeScore) ||
       Number.isNaN(awayScore)
     ) {
+
       console.warn(
         "Invalid score:",
         score
@@ -2854,10 +2916,14 @@ document.addEventListener("DOMContentLoaded", () => {
        Normal match:
        Points = sets won
 
-       Example:
+       Examples:
+
        3:2 -> 3 / 2
+       3:1 -> 3 / 1
        3:0 -> 3 / 0
        1:3 -> 1 / 3
+       2:3 -> 2 / 3
+
        ===================================================== */
 
     homeTeam.points += homeScore;
@@ -2895,7 +2961,9 @@ document.addEventListener("DOMContentLoaded", () => {
       createStanding();
 
 
-    /* Process every Match Week up to selected week */
+    /* =====================================================
+       PROCESS EVERY MATCH WEEK UP TO SELECTED WEEK
+       ===================================================== */
 
     for (
       let i = 0;
@@ -2928,18 +2996,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
        SORTING
-       =====================================================
 
        1. Points
        2. Set difference
        3. Sets won
        4. Wins
-       */
+       5. Alphabetical
+       ===================================================== */
 
     standing.sort((a, b) => {
 
 
-      /* Points */
+      /* ---------------------------------------------------
+         POINTS
+         --------------------------------------------------- */
 
       if (
         b.points !== a.points
@@ -2953,7 +3023,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      /* Set difference */
+      /* ---------------------------------------------------
+         SET DIFFERENCE
+         --------------------------------------------------- */
 
       const diffA =
         a.setsWon -
@@ -2976,7 +3048,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      /* Sets won */
+      /* ---------------------------------------------------
+         SETS WON
+         --------------------------------------------------- */
 
       if (
         b.setsWon !==
@@ -2991,7 +3065,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      /* Wins */
+      /* ---------------------------------------------------
+         WINS
+         --------------------------------------------------- */
 
       if (
         b.wins !==
@@ -3006,7 +3082,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      /* Alphabetical fallback */
+      /* ---------------------------------------------------
+         ALPHABETICAL FALLBACK
+         --------------------------------------------------- */
 
       return a.team.localeCompare(
         b.team
@@ -3070,7 +3148,9 @@ document.addEventListener("DOMContentLoaded", () => {
       calculateStanding(week);
 
 
-    /* Clear old table */
+    /* =====================================================
+       CLEAR OLD TABLE
+       ===================================================== */
 
     tbody.innerHTML = "";
 
@@ -3135,7 +3215,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* =================================================
-           TEAM NAME
+           TEAM LINK
            ================================================= */
 
         const link =
@@ -3258,7 +3338,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* If no matches have results */
+    /* =====================================================
+       IF NO MATCHES HAVE RESULTS
+       ===================================================== */
 
     if (currentWeek === 0) {
       currentWeek = 1;
@@ -3288,7 +3370,9 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
 
-          /* Remove active */
+          /* =================================================
+             REMOVE ACTIVE
+             ================================================= */
 
           switches.forEach(
             btn => {
@@ -3301,14 +3385,18 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          /* Activate clicked button */
+          /* =================================================
+             ACTIVATE CLICKED BUTTON
+             ================================================= */
 
           button.classList.add(
             "active"
           );
 
 
-          /* Get selected week */
+          /* =================================================
+             GET SELECTED WEEK
+             ================================================= */
 
           let week;
 
@@ -3333,7 +3421,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
 
-          /* Render */
+          /* =================================================
+             RENDER
+             ================================================= */
 
           renderStanding(
             week
@@ -3354,7 +3444,9 @@ document.addEventListener("DOMContentLoaded", () => {
     getCurrentWeek();
 
 
-  /* Activate current week */
+  /* =========================================================
+     ACTIVATE CURRENT WEEK
+     ========================================================= */
 
   switches.forEach(
     button => {
@@ -3379,7 +3471,9 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 
-  /* Render */
+  /* =========================================================
+     RENDER
+     ========================================================= */
 
   renderStanding(
     currentWeek
